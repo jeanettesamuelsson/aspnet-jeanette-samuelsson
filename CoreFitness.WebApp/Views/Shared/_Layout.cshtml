@@ -21,26 +21,26 @@
 
     <div class="site-container"> 
 
-    <header>
+         <header>
             @await Html.PartialAsync("Partials/_Navbar")
 
-    </header>
+         </header>
 
-    <div class="container">
+     <div class="container">
         <main>
             @RenderBody()
         </main>
 
-    </div>
-
-    <footer>
-        <div class="container">
-            &copy; 2026 - CoreFitness.WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
 
-    </footer>
+
+     
+    @await Html.PartialAsync("Partials/_Footer")
+
+      
+
    
-</div>
+   </div>
 
 
     <script src="~/js/site.js" asp-append-version="true"></script>

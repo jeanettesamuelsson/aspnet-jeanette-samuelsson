@@ -53,12 +53,24 @@ h2 {
     margin: 0 0 15px 0;
 }
 
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary-text-color);
+    margin: 0 0 10px 0;
+}
+
+
+
+
 /*Header-navbar */
 
 .header-nav {
-    background-color: black;
-    background-image: url('/images/dark-section-img.svg');
-    background-repeat: repeat;
+    background-color: #000;
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/dark-section-img.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 3rem;
 }
 
@@ -128,19 +140,95 @@ h2 {
 }
 
 
+#footer-wrapper {
+    width: 100%;
+    background-color: #000;
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/dark-section-img.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 1rem 5rem;
+    margin: auto;
+    color: white;
+}
 
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+    margin: 0 auto;
+    padding: 2rem;
+    
 
-
-
-
-   /* desktop media query for desktop */
-        
- @media (min-width: 768px) {
+        h3 {
+            display: none;
+        }
+}
 
    
+
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--brand-color, #CEFF05), transparent);
+    opacity: 0.2;
+    margin: 10px auto;
+    width: 100%;
+}
+
+
+.footer-middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+   
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.location-group {
+    flex: 0 1 45%; 
+}
+
+.hours-group {
+    text-align: right; 
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+}
+
+
+.map-wrapper {
+    margin-top: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+    .map-wrapper img {
+        width: 140px; 
+        border-radius: 8px;
+        opacity: 0.9;
+    }
+
+
+.footer-bottom-text {
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 30px;
+  
+}
+
+
+
+/* desktop media query for desktop */
+@media (min-width: 768px) {
+
+
     .container {
         max-width: 1200px;
-     
     }
 
     h1 {
@@ -151,7 +239,11 @@ h2 {
         font-size: 48px;
     }
 
-    
+    h3 {
+        font-size: 28px;
+    }
+
+
 
     .nav-wrapper {
         display: flex;
@@ -162,12 +254,12 @@ h2 {
     }
 
     .nav-links {
-        flex-direction: row; 
+        flex-direction: row;
         gap: 30px;
     }
 
     .nav-buttons {
-        flex-direction: row; 
+        flex-direction: row;
         gap: 25px;
     }
 
@@ -175,6 +267,25 @@ h2 {
         background-image: url('/images/dark-section-img.svg');
         background-repeat: repeat;
     }
-  
-    
+
+
+    #footer-wrapper {
+        width: 70%;
+        border-radius: 30px;
+
+    }
+
+    .footer-top {
+        
+
+        h3 {
+            display: block;
+            color: white;
+        }
+    }
+
+
 }
+
+
+

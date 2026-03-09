@@ -2,7 +2,39 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero-section">
+
+
+    <div class="hero-content">
+              <div id="hero-left-column">
+              <h1>
+            Build Strength Boost
+            Confidence Today!
+            </h1>
+
+             <p>
+            Begin your fitness journey with expert trainers, modern equipment, and a
+            supportive environment designed to help you build streangth and confidence.
+              </p>
+
+             <ul class="hero-features">
+            <li>  <i class="fa-solid fa-check"> </i> Transform your body with training</li>
+            <li>  <i class="fa-solid fa-check"> </i> Build confidence through fitness</li>
+            <li>  <i class="fa-solid fa-check"> </i> Personal training for real results</li>
+            <li>  <i class="fa-solid fa-check"> </i> Fitness tailored to your goals</li>
+                </ul>
+
+              <hr class="divider" />
+
+              <a asp-controller="Membership" asp-action="Index" class="btn-primary">Get Started</a>
+
+        </div>
+
+              <div id="hero-right-column">
+                 <img src="~/images/hero-right-column.svg" alt="Hero Image" />
+
+              </div>
+    </div>
+
+
+</section>

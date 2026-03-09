@@ -1,2 +1,164 @@
-﻿body {
+﻿
+h1 {
+    text-align: center;
+    font-weight: 700;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+    padding: 0 20px;
+}
+
+.card {
+    height: 100%;
+}
+
+.call-us-card {
+    background-color: var(--card-dark-footer);
+    border-radius: var(--border-radius);
+    height: 100%;
+}
+
+.membership-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden; 
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.card-header {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+.card-icon {
+    background-color: var(--primary-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.card-icon i {
+    color: #000;      
+    font-size: 1.8rem;  
+}
+.card-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.card-header hr {
+    border: 0;
+    border-top: 2px solid #EEE;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.card-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.feature-list i {
+    color: var(--green-color); 
+    font-size: 1.1rem;
+}
+
+
+.card-footer {
+    background-color: var(--card-dark-footer);
+    color: var(--text-on-dark);
+    padding: 25px 30px;
+}
+
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+.price {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.monthly {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+
+.price-info {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 25px;
+}
+
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 20px 0;
+}
+
+
+.trial-info {
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0.9;
+    margin: 0;
+}
+
+
+.check-icon {
+    width: 20px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 2rem 3rem; 
+    }
+
+     
 }

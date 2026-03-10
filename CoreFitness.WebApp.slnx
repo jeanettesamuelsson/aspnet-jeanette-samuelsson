@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="CoreFitness.Application/CoreFitness.Application.csproj" Id="a9ac7293-1058-4af6-b798-83c6ab98e94d" />
+  <Project Path="CoreFitness.Domain/CoreFitness.Domain.csproj" Id="4788002b-493a-4f6a-8c4d-e367e971cd46" />
   <Project Path="CoreFitness.Infrastructure/CoreFitness.Infrastructure.csproj" Id="afcd3e7c-37a3-4428-bed1-b7b24043537e" />
   <Project Path="CoreFitness.WebApp/CoreFitness.WebApp.csproj" />
 </Solution>

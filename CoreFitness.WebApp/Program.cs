@@ -1,9 +1,12 @@
+using CoreFitness.Domain.Models;
 using CoreFitness.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -22,6 +25,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

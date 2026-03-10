@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="CoreFitness.Infrastructure/CoreFitness.Infrastructure.csproj" Id="afcd3e7c-37a3-4428-bed1-b7b24043537e" />
   <Project Path="CoreFitness.WebApp/CoreFitness.WebApp.csproj" />
 </Solution>

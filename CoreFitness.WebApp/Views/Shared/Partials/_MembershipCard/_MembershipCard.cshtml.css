@@ -1,0 +1,121 @@
+
+.membership-card {
+    background-color: var(--card-bg-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+ 
+}
+
+.card-header {
+    padding: 2rem;
+}
+
+
+.card-icon {
+    background-color: var(--green-color); 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon i {
+    font-size: 1.2rem;
+}
+
+.card-header h2 {
+    font-size: 1.4rem;
+}
+
+.card-header hr {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 20px 0;
+   
+}
+
+.card-header p {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin-bottom: 2rem;
+}
+
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color:  var(--light-text-color);
+}
+
+.feature-list i {
+    color: var(--green-color);
+    font-size: 1rem;
+}
+
+
+.card-footer {
+    background-color:black;
+    margin: 0.5rem;
+    padding: 30px;
+    color: #fff;
+    border-radius: 30px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.price-block .price {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.price-block .monthly {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.signin-btn {
+    font-size: 0.85rem;
+    transition: transform 0.2s;
+}
+
+.signin-btn:hover {
+    transform: scale(1.05);
+    color: #000;
+}
+
+.price-info {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.footer-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+}
+
+.trial-info {
+    font-size: 0.8rem;
+    text-align: left;
+    opacity: 0.9;
+}
+

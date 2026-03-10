@@ -7,9 +7,11 @@
 :root {
     --primary-text-color: #27252F;
     --secondary-text-color: #FFFFFF;
+    --light-text-color: #7f7f87;
     --active-link-color: #D6EB31;
     --green-color: #D6EB31;
     --primary-bg-color: #F2F2F2;
+    --card-bg-color: #FFFFFF;
 }
 
 html, body {

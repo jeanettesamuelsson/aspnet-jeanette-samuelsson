@@ -1,6 +1,6 @@
 using CoreFitness.Application.Extensions;
-using CoreFitness.Domain.Models;
 using CoreFitness.Infrastructure.Extensions;
+using CoreFitness.Infrastructure.Persistence;
 using CoreFitness.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +18,8 @@ builder.Services.AddApplication(builder.Configuration, builder.Environment);
 
 
 var app = builder.Build();
+
+await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
 
 
 app.UseHsts();

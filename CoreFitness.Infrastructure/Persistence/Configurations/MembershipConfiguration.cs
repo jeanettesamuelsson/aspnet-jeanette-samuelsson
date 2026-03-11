@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CoreFitness.Infrastructure.Data.Configurations;
+namespace CoreFitness.Infrastructure.Persistence.Configurations;
 
 public class MembershipConfiguration : IEntityTypeConfiguration<MembershipEntity>
 {

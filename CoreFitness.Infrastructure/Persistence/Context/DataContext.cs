@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace CoreFitness.Infrastructure.Data;
+namespace CoreFitness.Infrastructure.Persistence.Data;
 
 public class DataContext(DbContextOptions<DataContext> options) : IdentityDbContext<AppUser>(options)
 {

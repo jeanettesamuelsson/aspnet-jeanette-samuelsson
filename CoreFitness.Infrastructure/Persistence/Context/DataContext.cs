@@ -11,4 +11,13 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
 
    public DbSet<MembershipEntity> Memberships { get; set; }
 
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        //creates identity tables and relationships first
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
+    }
+
 }

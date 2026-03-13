@@ -15,11 +15,12 @@ public static class ContextRegistrationExtension
     {
         if (env.IsDevelopment())
         {
-            Console.WriteLine("Development Environment - Using Local Docker SQL Server");
+            Console.WriteLine("Development Environment - Using Local SQLite File");
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");
+
             services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlite(connectionString));
         }
 
         else if (env.IsEnvironment("Testing"))

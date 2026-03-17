@@ -1,5 +1,5 @@
-﻿using CoreFitness.Domain.Entities;
-using CoreFitness.Domain.Models;
+﻿using CoreFitness.Domain.Models;
+using CoreFitness.Domain.Models.Memberships;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,4 @@
-﻿using CoreFitness.Domain.Entities;
+﻿using CoreFitness.Domain.Models.Memberships;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,8 +16,8 @@ public class MembershipConfiguration : IEntityTypeConfiguration<MembershipEntity
 
         // Generate unique ID in db
         builder.Property(e => e.Id)
-            .ValueGeneratedOnAdd()
-            .HasDefaultValueSql("(NEWSEQUENTIALID())"); 
+            .ValueGeneratedOnAdd();
+           
 
         builder.Property(e => e.UserId)
             .IsRequired();

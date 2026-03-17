@@ -1,0 +1,21 @@
+﻿.notfound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 5rem;
+}
+
+.notfound-text {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+
+    h1 {
+        color: var(--primary-text-color);
+    }
+}
+
+   

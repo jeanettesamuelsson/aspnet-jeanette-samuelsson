@@ -146,6 +146,7 @@ h3 {
     width: fit-content;   
     display: inline-block; 
     transition: transform 0.2s, background-color 0.2s;
+    border: none;
 }
 
 .signin-btn:hover {

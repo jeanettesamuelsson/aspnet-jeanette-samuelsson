@@ -19,8 +19,10 @@ builder.Services.AddApplication(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 
-await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
+//PAUSA DATAABSEN await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
 
+
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
 app.UseHsts();
 app.UseHttpsRedirection();

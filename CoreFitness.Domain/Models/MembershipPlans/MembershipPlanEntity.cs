@@ -2,7 +2,6 @@
 
 public class MembershipPlanEntity
 {
-    public Guid Id { get; set; }
     public MembershipPlanType MembershipPlanType { get; set; }
     public string Description { get; set; } = null!;
     public ICollection<MembershipPlanFeaturesEntity> Features { get; set; } = [];

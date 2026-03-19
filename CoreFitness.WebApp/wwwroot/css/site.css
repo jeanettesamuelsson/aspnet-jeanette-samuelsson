@@ -36,8 +36,6 @@ html, body {
 
 .container {
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -67,6 +65,29 @@ h3 {
     color: var(--primary-text-color);
     margin-bottom: 1rem;
 }
+
+.badge {
+    background-color: var(--primary-text-color);
+    color: white;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+    .badge::before {
+        content: "";
+        display: inline-block;
+        width: 6px; 
+        height: 6px;
+        background-color: var(--green-color);
+        border-radius: 50%; 
+    }
+
 
 
 /*Header-navbar */
@@ -258,44 +279,6 @@ h3 {
         font-weight: 800;
         font-size: 2rem;
         color: #1a1a1a;
-    }
-
-.about-us .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
-.badge {
-    background: #1a1a1a;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-}
-
-.text-content h1 {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin: 20px 0;
-}
-
-.quote-card {
-    background: #f9f9f9;
-    padding: 30px;
-    border-radius: 15px;
-    position: relative;
-    margin-top: 40px;
-}
-
-    .quote-card p {
-        font-weight: 600;
-        color: #333;
-        line-height: 1.6;
     }
 
 

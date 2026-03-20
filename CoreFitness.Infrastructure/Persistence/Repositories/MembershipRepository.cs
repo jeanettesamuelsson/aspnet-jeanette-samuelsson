@@ -1,6 +1,6 @@
-﻿using CoreFitness.Domain.Abstractions.Repositories;
-using CoreFitness.Domain.Entities.Memberships;
-using CoreFitness.Domain.Models;
+﻿using CoreFitness.Infrastrcuture.Abstractions.Repositories;
+using CoreFitness.Infrastrcuture.Entities.Memberships;
+using CoreFitness.Infrastrcuture.Models;
 using CoreFitness.Infrastructure.Persistence.Data;
 
 

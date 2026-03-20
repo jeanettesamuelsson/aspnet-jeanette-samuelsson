@@ -1,5 +1,5 @@
 ﻿
-using CoreFitness.Domain.Abstractions.Repositories;
+using CoreFitness.Infrastrcuture.Abstractions.Repositories;
 
 namespace CoreFitness.Application.Memberships;
 

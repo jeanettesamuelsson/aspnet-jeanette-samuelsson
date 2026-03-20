@@ -1,4 +1,4 @@
-﻿namespace CoreFitness.Domain.Entities;
+﻿namespace CoreFitness.Infrastructure.Persistence.Entities;
 
 public abstract class BaseEntity
 {

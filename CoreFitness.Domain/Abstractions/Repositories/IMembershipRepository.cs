@@ -1,5 +1,5 @@
 ﻿
-namespace CoreFitness.Domain.Abstractions.Repositories;
+namespace CoreFitness.Infrastrcuture.Abstractions.Repositories;
 
 public interface IMembershipRepository
 {

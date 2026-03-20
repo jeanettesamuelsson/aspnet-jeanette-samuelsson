@@ -1,4 +1,4 @@
-﻿using CoreFitness.Domain.Abstractions.Repositories;
+﻿using CoreFitness.Infrastrcuture.Abstractions.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoreFitness.Infrastructure.Persistence.Repositories;

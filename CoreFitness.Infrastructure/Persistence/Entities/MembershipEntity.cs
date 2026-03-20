@@ -1,8 +1,6 @@
-﻿
+﻿using CoreFitness.Infrastructure.Identity;
 
-using CoreFitness.Domain.Models;
-
-namespace CoreFitness.Domain.Entities.Memberships;
+namespace CoreFitness.Infrastructure.Persistence.Entities;
 
 public sealed class MembershipEntity //: BaseEntity
 {

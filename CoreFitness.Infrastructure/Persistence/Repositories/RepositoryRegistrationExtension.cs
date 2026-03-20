@@ -1,4 +1,4 @@
-﻿using CoreFitness.Domain.Abstractions.Repositories;
+﻿using CoreFitness.Infrastrcuture.Abstractions.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

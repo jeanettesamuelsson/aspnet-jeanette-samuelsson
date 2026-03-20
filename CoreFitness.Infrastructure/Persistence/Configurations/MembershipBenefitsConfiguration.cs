@@ -1,4 +1,4 @@
-﻿using CoreFitness.Domain.Entities.Memberships;
+﻿using CoreFitness.Infrastrcuture.Entities.Memberships;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

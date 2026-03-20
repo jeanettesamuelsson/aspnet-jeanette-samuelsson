@@ -1,6 +1,5 @@
 ﻿
-
-namespace CoreFitness.Domain.Entities.Memberships;
+namespace CoreFitness.Infrastructure.Persistence.Entities;
 
 public sealed class MembershipBenefitEntity
 {

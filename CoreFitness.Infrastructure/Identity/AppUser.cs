@@ -1,9 +1,10 @@
-﻿using CoreFitness.Domain.Entities.Memberships;
+﻿
+using CoreFitness.Infrastructure.Persistence.Entities;
 using Microsoft.AspNetCore.Identity;
 
 
 
-namespace CoreFitness.Domain.Models;
+namespace CoreFitness.Infrastructure.Identity;
 
 public class AppUser : IdentityUser
 {

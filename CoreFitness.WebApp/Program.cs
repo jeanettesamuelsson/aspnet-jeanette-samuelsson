@@ -1,8 +1,7 @@
 using CoreFitness.Application.Extensions;
 using CoreFitness.Infrastructure.Extensions;
 using CoreFitness.Infrastructure.Persistence;
-using CoreFitness.Infrastructure.Persistence.Data;
-using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +18,7 @@ builder.Services.AddApplication(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 
-//PAUSA DATAABSEN await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
+await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
 
 
 app.UseStatusCodePagesWithReExecute("/Error/{0}");

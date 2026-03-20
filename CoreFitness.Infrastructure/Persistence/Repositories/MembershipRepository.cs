@@ -1,7 +1,7 @@
 ﻿using CoreFitness.Infrastrcuture.Abstractions.Repositories;
-using CoreFitness.Infrastrcuture.Entities.Memberships;
 using CoreFitness.Infrastrcuture.Models;
 using CoreFitness.Infrastructure.Persistence.Data;
+using CoreFitness.Infrastructure.Persistence.Entities;
 
 
 namespace CoreFitness.Infrastructure.Persistence.Repositories;

@@ -1,4 +1,4 @@
-﻿using CoreFitness.Domain.Models.Memberships;
+﻿using CoreFitness.Domain.Entities.Memberships;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,52 +12,63 @@ public class MembershipConfiguration : IEntityTypeConfiguration<MembershipEntity
         builder.ToTable("Memberships");
 
         // Set PK
-        builder.HasKey(e => e.Id).HasName("PK_Memberships_Id");
+        builder.HasKey(e => e.Id);
 
-        // Generate unique ID in db
-        builder.Property(e => e.Id)
-            .ValueGeneratedOnAdd();
-           
+       builder.Property(e => e.Id)
+            .ValueGeneratedNever();
+
+        builder.Property(e => e.Title)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(e => e.Description)
+            .IsRequired()
+            .HasMaxLength(500);
+
+        builder.Property(e => e.Price)
+            .HasColumnType("decimal(18,2)")
+            .IsRequired();
+
+        builder.Property(e => e.MonthlyClasses)
+            .IsRequired();
+
+
+
+        // --- RELATIONER ---
+
 
         builder.Property(e => e.UserId)
             .IsRequired();
 
-        builder.Property(e => e.MembershipType)
-            .IsRequired()
-            .HasMaxLength(50);
 
-        builder.Property(e => e.IsActive)
-            .IsRequired()
-            .HasDefaultValue(true);
+        builder.HasMany(e => e.Benefits)       
+            .WithOne(b => b.Membership)         
+            .HasForeignKey(b => b.MembershipId)   
+            .OnDelete(DeleteBehavior.Cascade);
 
-        // Concurrency token (RowVersion) 
-        builder.Property<byte[]>("Concurrency")
-            .IsRowVersion()
-            .IsConcurrencyToken()
-            .IsRequired();
 
-     
-        builder.Property(e => e.StartDate)
-            .HasPrecision(0)
-            .IsRequired()
-            .HasDefaultValueSql("(SYSUTCDATETIME())")
-            .ValueGeneratedOnAdd();
-
-        builder.Property(e => e.EndDate)
-            .HasPrecision(0)
-            .IsRequired(false);
-
-        // 1 - 1 connection: AppUser <-> Membership
-      
         builder.HasOne(e => e.User)
             .WithOne(u => u.Membership)
             .HasForeignKey<MembershipEntity>(e => e.UserId)
             .OnDelete(DeleteBehavior.Cascade)
             .HasConstraintName("FK_Memberships_Users");
 
-        // Unique index for UserId
-        // a user can only have ONE membership
         builder.HasIndex(e => e.UserId, "UQ_Memberships_UserId")
             .IsUnique();
+    }
+}
+
+public class MembershipBenefitsConfiguration : IEntityTypeConfiguration<MembershipBenefitEntity>
+{
+    public void Configure(EntityTypeBuilder<MembershipBenefitEntity> builder)
+    {
+
+        builder.ToTable("MembershipBenefits");
+
+        // Set PK
+        builder.HasKey(e => e.Id);
+
+   
+      
     }
 }

@@ -58,17 +58,3 @@ public class MembershipConfiguration : IEntityTypeConfiguration<MembershipEntity
     }
 }
 
-public class MembershipBenefitsConfiguration : IEntityTypeConfiguration<MembershipBenefitEntity>
-{
-    public void Configure(EntityTypeBuilder<MembershipBenefitEntity> builder)
-    {
-
-        builder.ToTable("MembershipBenefits");
-
-        // Set PK
-        builder.HasKey(e => e.Id);
-
-   
-      
-    }
-}

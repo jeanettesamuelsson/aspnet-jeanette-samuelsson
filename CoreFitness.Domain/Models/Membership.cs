@@ -41,8 +41,10 @@ public sealed class Membership
     }
 
 
+
     public static Membership Create(string title, string description, List<string> benefits, decimal price = 0, int monthlyClasses = 20) =>
         new(Guid.NewGuid().ToString(), title, description, benefits, price, monthlyClasses);
+
 
 
     public static Membership Rehydrate(string id, string title, string description, List<string> benefits, decimal price = 0, int monthlyClasses = 20) =>

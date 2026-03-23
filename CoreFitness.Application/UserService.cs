@@ -1,4 +1,4 @@
-﻿using CoreFitness.Infrastrcuture.Models;
+﻿
 using Microsoft.AspNetCore.Identity;
 
 namespace CoreFitness.Application;

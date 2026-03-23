@@ -42,7 +42,7 @@ public sealed class Membership
         return value;
     }
 
-    // create and rehydrate methods
+    // create and rehydrate 
 
     public static Membership Create(string title, string description, List<string> benefits, decimal price = 0, int monthlyClasses = 20) =>
         new(Guid.NewGuid().ToString(), title, description, benefits, price, monthlyClasses);

@@ -14,6 +14,8 @@ public static class InfrastructureServiceCollectionRegistrationExtensions
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env )
     {
         services.AddPersistence(configuration, env);
+        services.AddIdentityServices();
+
 
         return services;
     }

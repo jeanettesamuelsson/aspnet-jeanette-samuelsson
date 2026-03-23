@@ -40,6 +40,14 @@ html, body {
     margin-right: auto;
 }
 
+.auth-layout {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100dvh;
+    padding: 1rem;
+
+}
+
 h1 {
    
     font-size: clamp(2rem, 7vw, 54px);

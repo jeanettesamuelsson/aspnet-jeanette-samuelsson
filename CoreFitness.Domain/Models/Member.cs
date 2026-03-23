@@ -1,20 +1,14 @@
-﻿using System;
-
-namespace CoreFitness.Domain.Models;
+﻿namespace CoreFitness.Domain.Models;
 
 public sealed class Member
 {
-    // private constructor
-    private Member(string id, string userId, string firstName, string lastName, string? phoneNumber, string? profileImageUri, DateTime createdAt, DateTime? updatedAt)
+    
+    private Member(string id, string userId, DateTime createdAt)
     {
         Id = Required(id, nameof(id));
         UserId = Required(userId, nameof(userId));
-        FirstName = Required(firstName, nameof(firstName));
-        LastName = Required(lastName, nameof(lastName));
-        PhoneNumber = phoneNumber;
-        ProfileImageUri = profileImageUri;
         CreatedAt = createdAt;
-        UpdatedAt = updatedAt;
+     
     }
 
 
@@ -29,17 +23,7 @@ public sealed class Member
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
-   
-    //validation methods
-    
-    public void UpdateInformation(string firstName, string lastName, string? phoneNumber, string? profileImageUri)
-    {
-        FirstName = Required(firstName, nameof(firstName));
-        LastName = Required(lastName, nameof(lastName));
-        PhoneNumber = phoneNumber;
-        ProfileImageUri = profileImageUri;
-        UpdatedAt = DateTime.UtcNow;
-    }
+
 
 
     private static string Required(string value, string propertyName)
@@ -50,24 +34,39 @@ public sealed class Member
         return value.Trim();
     }
 
+    public void UpdateInformation(string firstName, string lastName, string? phoneNumber, string? profileImageUri)
+    {
+        FirstName = Required(firstName, nameof(firstName));
+        LastName = Required(lastName, nameof(lastName));
+        PhoneNumber = phoneNumber;
+        ProfileImageUri = profileImageUri;
+        UpdatedAt = DateTime.UtcNow;
+    }
 
-    // create and rehydrate methods
-    public static Member Create(string userId, string firstName, string lastName, string? phoneNumber = null, string? profileImageUri = null)
+
+    // create and rehydrate
+    public static Member Create(string userId)
     {
         return new Member(
             Guid.NewGuid().ToString(),
             userId,
-            firstName,
-            lastName,
-            phoneNumber,
-            profileImageUri,
-            DateTime.UtcNow,
-            null);
+            DateTime.UtcNow
+            
+            );
     }
 
-
-    public static Member Rehydrate(string id, string userId, string firstName, string lastName, string? phoneNumber, string? profileImageUri, DateTime createdAt, DateTime? updatedAt)
+    //rehydrate (existing from database) does not generate a new guid 
+    public static Member Rehydrate(string id, string userId, DateTime createdAt, string? firstName, string? lastName, string? phoneNumber, string? profileImageUri, DateTime? updatedAt)
     {
-        return new Member(id, userId, firstName, lastName, phoneNumber, profileImageUri, createdAt, updatedAt);
+        var member = new Member(id, userId, createdAt)
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            PhoneNumber = phoneNumber,
+            ProfileImageUri = profileImageUri,
+            UpdatedAt = updatedAt
+        };
+
+        return member;
     }
 }

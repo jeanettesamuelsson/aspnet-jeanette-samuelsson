@@ -1,5 +1,6 @@
-﻿using CoreFitness.Infrastrcuture.Entities.Memberships;
-using CoreFitness.Infrastrcuture.Models;
+﻿
+using CoreFitness.Infrastructure.Identity;
+using CoreFitness.Infrastructure.Persistence.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,7 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
 
     public DbSet<MembershipEntity> Memberships => Set<MembershipEntity>();
     public DbSet<MembershipBenefitEntity> MembershipBenefits => Set<MembershipBenefitEntity>();
+    public DbSet<MemberEntity> Members => Set<MemberEntity>();
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -5,6 +5,8 @@ namespace CoreFitness.Infrastrcuture.Models;
 //Domain model for Membership. This model includes properties such as Title, Description, Benefits, Price, and MonthlyClasses. It also includes validation logic to ensure that required fields are provided and that the price is not negative. The Create method allows for easy instantiation of new Membership objects, while the Rehydrate method can be used to reconstruct a Membership from existing data.
 public sealed class Membership
 {
+
+    //private constructor
     private Membership(string id, string title, string description, List<string> benefits, decimal price, int monthlyClasses)
     {
         Id = Required(id, nameof(id));
@@ -23,7 +25,7 @@ public sealed class Membership
 
         public int MonthlyClasses { get; private set; }
 
-
+    //validation methods
     private static string Required (string value, string propertyName)
     {
         if (string.IsNullOrWhiteSpace(value))
@@ -40,7 +42,7 @@ public sealed class Membership
         return value;
     }
 
-
+    // create and rehydrate methods
 
     public static Membership Create(string title, string description, List<string> benefits, decimal price = 0, int monthlyClasses = 20) =>
         new(Guid.NewGuid().ToString(), title, description, benefits, price, monthlyClasses);

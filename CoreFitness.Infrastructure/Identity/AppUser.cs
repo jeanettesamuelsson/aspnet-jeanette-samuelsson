@@ -8,13 +8,7 @@ namespace CoreFitness.Infrastructure.Identity;
 
 public class AppUser : IdentityUser
 {
-    [ProtectedPersonalData]
-    public string FirstName { get; set; } = null!;
-
-    [ProtectedPersonalData]
-    public string LastName { get; set; } = null!;
-
-    // navigation property
+   public MemberEntity? Member { get; set; }
 
     public virtual MembershipEntity? Membership { get; set; }
 

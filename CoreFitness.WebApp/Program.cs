@@ -18,12 +18,14 @@ builder.Services.AddApplication(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 
-await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
+// pausa databas await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
 
 
-app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
 
 app.UseHsts();
+
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

@@ -56,7 +56,7 @@ public sealed class Member
     }
 
     //rehydrate (existing from database) does not generate a new guid 
-    public static Member Rehydrate(string id, string userId, DateTime createdAt, string? firstName, string? lastName, string? phoneNumber, string? profileImageUri, DateTime? updatedAt)
+    public static Member Rehydrate(string id, string userId, string? firstName, string? lastName, string? phoneNumber, string? profileImageUri, DateTime createdAt, DateTime? updatedAt)
     {
         var member = new Member(id, userId, createdAt)
         {

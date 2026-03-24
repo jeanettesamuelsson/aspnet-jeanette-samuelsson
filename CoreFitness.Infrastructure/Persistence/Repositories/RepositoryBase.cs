@@ -9,6 +9,7 @@ public abstract class RepositoryBase<TDomainModel, TId, TEntity, TDbContext>(TDb
 
     protected DbSet<TEntity> Set => _context.Set<TEntity>();
 
+
     protected abstract TId GetId(TDomainModel model);
 
     protected abstract TEntity ToEntity(TDomainModel model);

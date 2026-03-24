@@ -1,0 +1,10 @@
+﻿namespace CoreFitness.Application.Members.Inputs;
+
+public record SignInInput(
+
+    string Email,
+    string Password,
+    bool RemeberMe
+    );
+
+

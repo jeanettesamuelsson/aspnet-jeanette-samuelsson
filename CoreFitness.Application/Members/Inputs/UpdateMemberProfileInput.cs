@@ -1,6 +1,6 @@
 ﻿namespace CoreFitness.Application.Members.Inputs;
 
-public record UpdateMemberAccountInput(
+public record UpdateMemberProfileInput(
     
     string UserId,
     string FirstName,

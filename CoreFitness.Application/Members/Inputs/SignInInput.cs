@@ -4,7 +4,7 @@ public record SignInInput(
 
     string Email,
     string Password,
-    bool RemeberMe
+    bool RememberMe
     );
 
 

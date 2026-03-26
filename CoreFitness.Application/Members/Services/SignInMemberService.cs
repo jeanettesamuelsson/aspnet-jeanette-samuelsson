@@ -13,7 +13,7 @@ public class SignInMemberService(IIdentityService identityService) : ISignInMemb
             if (input is null)
                 throw new ArgumentException("Input must be provided");
 
-            var result = await identityService.PasswordSignInAsync(input.Email, input.Password, input.RemeberMe, ct);
+            var result = await identityService.PasswordSignInAsync(input.Email, input.Password, input.RememberMe, ct);
 
             return !result.Success ? Result.Error(result.ErrorMessage ?? "Invalid email or password") : Result.Ok();
 

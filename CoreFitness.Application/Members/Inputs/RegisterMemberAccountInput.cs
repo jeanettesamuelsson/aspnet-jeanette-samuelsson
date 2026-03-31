@@ -1,7 +1,7 @@
 ﻿
 namespace CoreFitness.Application.Members.Inputs;
 
-public record RegisterMemberInput(
+public record RegisterMemberAccountInput(
 
     string Email,
     string Password

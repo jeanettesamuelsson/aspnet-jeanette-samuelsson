@@ -1,5 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model RegisterEmailForm
+
+
 @{
+    Layout = "Layouts/_AuthLayout";
 }
+
+<section class="auth-section">
+    <form class="auth-form" asp-action="SignUp" asp-controller="Authentication" method="post" novalidate>
+        <h1 class ="title">Become a Member</h1>
+        <p>Sign up to continue your fitness journey with full access to your customized program,
+            training history, and progress tracking. Stay consistent, monitor your development,
+            and keep moving forward with the structure and support built into your account. </p>
+
+            <hr />
+
+        <div class="login-icons">
+            <img src="~/images/google.svg" alt="Icons" />
+            <img src="~/images/facebook.svg" alt="Icons" />
+            <img src="~/images/github.svg" alt="Icons" />
+
+        </div>
+
+            <hr />
+
+        <div class="form-group">
+            <label class="form-label" asp-for="Email"></label>
+            <input class="form-input" asp-for="Email" />
+
+            <span class="field-validation-error" asp-validation-for="Email"></span>
+
+        </div>  
+
+        <button type="submit">
+            <span>Continue</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        
+
+        <div class="additional-information">
+            <p>We will send a verification code to your email address.</p>
+        </div>
+
+    </form>
+</section>

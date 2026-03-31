@@ -67,7 +67,7 @@
 
 
 .card-footer {
-    background-color:black;
+    background-color:var(--card-secondary-bg-color);
     margin: 0.5rem;
     padding: 30px;
     color: #fff;

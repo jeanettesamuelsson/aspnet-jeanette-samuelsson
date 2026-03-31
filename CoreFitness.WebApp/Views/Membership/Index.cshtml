@@ -3,13 +3,35 @@
 
 
 <div class="cards-grid">
+
+    @* @foreach (var card in Model.Memberships)
+    {
+        <partial name="Partials/_MembershipCard/_MembershipCard" model="card" />
+    } *@
+    
    
         <partial name="Partials/_MembershipCard/_MembershipCard" />
 
         <partial name="Partials/_MembershipCard/_MembershipCard"  />
 
+   
+
     <div class="call-us-card">
-        
+        <h3>Get Your Membership</h3>
+        <p>
+            Our memberships give you access to all
+            equipment, personalized training.
+        </p>
+
+        <hr />
+
+        <p>Call Us At: +(46) 8 410 521 00</p>
+
+        <a href="#" class="signin-btn">Call Us Today! <i class="fa-solid fa-chevron-right"></i></a>
+
+        <img src="~/images/card-img.svg" />
+
+
     </div>
 
 </div>

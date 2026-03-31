@@ -13,18 +13,29 @@
             and keep moving forward with the structure and support built into your account. </p>
 
             <hr />
-          @*   Icons *@
+
+        <div class="login-icons">
+            <img src="~/images/google.svg" alt="Icons" />
+            <img src="~/images/facebook.svg" alt="Icons" />
+            <img src="~/images/github.svg" alt="Icons" />
+
+        </div>
+
             <hr />
 
         <div class="form-group">
             <label class="form-label" asp-for="Email"></label>
-            <input class="input-label" asp-for="Email" />
+            <input class="form-input" asp-for="Email" />
 
             <span class="field-validation-error" asp-validation-for="Email"></span>
 
         </div>  
 
-        <button class="form-button" type="submit">Continue</button>
+        <button type="submit">
+            <span>Continue</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        
 
         <div class="additional-information">
             <p>We will send a verification code to your email address.</p>

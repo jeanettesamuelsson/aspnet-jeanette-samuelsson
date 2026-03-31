@@ -17,8 +17,13 @@
 
     <hr />
 
+    <div class="login-icons">
+    <img src="~/images/google.svg" alt="Icons" />
+    <img src="~/images/facebook.svg" alt="Icons" />
+    <img src="~/images/github.svg" alt="Icons" />
 
-   @*  Ikoner här  *@
+    </div>
+
 
     <hr />
 
@@ -45,7 +50,11 @@
         <label asp-for="RememberMe" />
     </div>
 
-    <button type="submit">Continue</button>
+        <button type="submit">
+            <span>Continue</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        
 
         @if (!string.IsNullOrWhiteSpace(ViewData["ErrorMessage"]?.ToString()))
             {
@@ -56,7 +65,7 @@
             }
 
             <p class="additional-information">
-                Not a member yet? <a asp-action="SignUp" asp-controller="Autentication">Become one</a>
+                Not a member yet? <a asp-action="SignUp" asp-controller="Authentication">Become one</a>
             </p>
 </form>
 

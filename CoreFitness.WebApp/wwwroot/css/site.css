@@ -1,5 +1,9 @@
 
 
+
+
+/* #region general styling*/ 
+
 *,
 *::before,
 *::after {
@@ -15,6 +19,7 @@
     --primary-bg-color: #F2F2F2;
     --card-bg-color: #FFFFFF;
     --card-secondary-bg-color: #080517;
+    --faq-text-color: #6F6F6F;
 }
 
 html, body {
@@ -112,9 +117,9 @@ h3 {
         border-radius: 50%; 
     }
 
+/*    #endregion */
 
-
-/*Header-navbar */
+/* #region Header-navbar */
 
 .header-nav {
     background-color: #000;
@@ -213,6 +218,9 @@ h3 {
 }
 
 
+/*#endregion*/
+
+/* #region footer */
      
 
 #footer-wrapper {
@@ -297,6 +305,127 @@ h3 {
     display: none;
   
 }
+
+/*#endregion*/
+
+/* #region FAQ*/
+
+#faq-section {
+    display: flex;
+    align-items: stretch; 
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#faq-img {
+    flex: 1; 
+    display: flex; 
+}
+
+    #faq-img img {
+        width: 100%;
+        height: 100%; 
+        border-radius: 20px;
+        object-fit: cover; 
+        display: block;
+    }
+
+#faq-r-column {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+    #faq-r-column h1 {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+#accordion-container {
+    width: 100%;
+}
+
+details {
+    border-bottom: 1px solid color-mix(in srgb, var(--faq-text-color), transparent 80%);
+}
+
+summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary-text-color);
+    list-style: none; 
+}
+
+
+    summary::after {
+        display: none;
+    }
+
+
+#accordion-container summary i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--green-color);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    color: #000;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    margin: 0;
+}
+
+details[open] summary i {
+    transform: rotate(180deg);
+}
+
+.answer {
+    padding-bottom: 20px;
+    color: #666;
+    line-height: 1.6;
+}
+
+    .answer p {
+        margin: 10px 0 0 0;
+    }
+
+    .answer ul {
+        list-style: none;
+        padding: 15px 0;
+    }
+
+    .answer li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 8px;
+    }
+
+        .answer li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--green-color);
+            border-radius: 50%;
+        }
+
+
+/* #endregion */
 
   
 

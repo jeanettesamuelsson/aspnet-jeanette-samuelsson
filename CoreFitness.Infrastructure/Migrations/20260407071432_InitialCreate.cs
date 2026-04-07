@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CoreFitness.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialSQLite : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,8 +30,6 @@ namespace CoreFitness.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
-                    LastName = table.Column<string>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -159,24 +157,66 @@ namespace CoreFitness.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Memberships",
+                name: "Members",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false, defaultValueSql: "(NEWSEQUENTIALID())"),
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
                     UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "TEXT", precision: 0, nullable: false, defaultValueSql: "(SYSUTCDATETIME())"),
-                    EndDate = table.Column<DateTime>(type: "TEXT", precision: 0, nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
-                    MembershipType = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    Concurrency = table.Column<byte[]>(type: "BLOB", rowVersion: true, nullable: false)
+                    FirstName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    LastName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
+                    ProfileImageUri = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Memberships_Id", x => x.Id);
+                    table.PrimaryKey("PK_Members", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Members_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Memberships",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MonthlyClasses = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Memberships", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Memberships_Users",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MembershipBenefits",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    MembershipId = table.Column<string>(type: "TEXT", nullable: false),
+                    Benefit = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MembershipBenefits", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MembershipBenefits_Memberships_MembershipId",
+                        column: x => x.MembershipId,
+                        principalTable: "Memberships",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -219,6 +259,22 @@ namespace CoreFitness.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Members_Id",
+                table: "Members",
+                column: "Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Members_UserId",
+                table: "Members",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MembershipBenefits_MembershipId",
+                table: "MembershipBenefits",
+                column: "MembershipId");
+
+            migrationBuilder.CreateIndex(
                 name: "UQ_Memberships_UserId",
                 table: "Memberships",
                 column: "UserId",
@@ -244,10 +300,16 @@ namespace CoreFitness.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Memberships");
+                name: "Members");
+
+            migrationBuilder.DropTable(
+                name: "MembershipBenefits");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Memberships");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

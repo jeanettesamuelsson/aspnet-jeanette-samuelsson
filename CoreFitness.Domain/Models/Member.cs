@@ -17,11 +17,11 @@ public sealed class Member
      public string Id { get; private set; } = null!;
      public string UserId { get; private set;  } = null!;
      public string? FirstName { get; private set; }
-    public string? LastName { get; private set; }
-    public string? PhoneNumber { get; private set; }
-    public string? ProfileImageUri { get; private set; }
-    public DateTime CreatedAt { get; private set; }
-    public DateTime? UpdatedAt { get; private set; }
+     public string? LastName { get; private set; }
+     public string? PhoneNumber { get; private set; }
+     public string? ProfileImageUri { get; private set; }
+     public DateTime CreatedAt { get; private set; }
+     public DateTime? UpdatedAt { get; private set; }
 
 
 

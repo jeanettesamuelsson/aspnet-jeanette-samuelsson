@@ -2,9 +2,6 @@
 using CoreFitness.Infrastructure.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CoreFitness.Infrastructure.Persistence.Configurations;
 
@@ -42,11 +39,10 @@ public class MemberEntityConfiguration : IEntityTypeConfiguration<MemberEntity>
            
 
         builder
-            .HasOne<AppUser>()
+            .HasOne(x => x.User) 
             .WithOne(x => x.Member)
             .HasForeignKey<MemberEntity>(x => x.UserId)
             .OnDelete(DeleteBehavior.Cascade);
-
 
     }
 }

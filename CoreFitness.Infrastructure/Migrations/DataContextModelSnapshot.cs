@@ -17,61 +17,7 @@ namespace CoreFitness.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.4");
 
-            modelBuilder.Entity("CoreFitness.Domain.Entities.Memberships.MembershipBenefitEntity", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Benefit")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MembershipId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MembershipId");
-
-                    b.ToTable("MembershipBenefits", (string)null);
-                });
-
-            modelBuilder.Entity("CoreFitness.Domain.Entities.Memberships.MembershipEntity", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("MonthlyClasses")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex(new[] { "UserId" }, "UQ_Memberships_UserId")
-                        .IsUnique();
-
-                    b.ToTable("Memberships", (string)null);
-                });
-
-            modelBuilder.Entity("CoreFitness.Domain.Models.AppUser", b =>
+            modelBuilder.Entity("CoreFitness.Infrastructure.Identity.AppUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -89,14 +35,6 @@ namespace CoreFitness.Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("INTEGER");
@@ -141,6 +79,101 @@ namespace CoreFitness.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("CoreFitness.Infrastructure.Persistence.Entities.MemberEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProfileImageUri")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Members", (string)null);
+                });
+
+            modelBuilder.Entity("CoreFitness.Infrastructure.Persistence.Entities.MembershipBenefitEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Benefit")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MembershipId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MembershipId");
+
+                    b.ToTable("MembershipBenefits", (string)null);
+                });
+
+            modelBuilder.Entity("CoreFitness.Infrastructure.Persistence.Entities.MembershipEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MonthlyClasses")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "UserId" }, "UQ_Memberships_UserId")
+                        .IsUnique();
+
+                    b.ToTable("Memberships", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -271,9 +304,20 @@ namespace CoreFitness.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CoreFitness.Domain.Entities.Memberships.MembershipBenefitEntity", b =>
+            modelBuilder.Entity("CoreFitness.Infrastructure.Persistence.Entities.MemberEntity", b =>
                 {
-                    b.HasOne("CoreFitness.Domain.Entities.Memberships.MembershipEntity", "Membership")
+                    b.HasOne("CoreFitness.Infrastructure.Identity.AppUser", "User")
+                        .WithOne("Member")
+                        .HasForeignKey("CoreFitness.Infrastructure.Persistence.Entities.MemberEntity", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CoreFitness.Infrastructure.Persistence.Entities.MembershipBenefitEntity", b =>
+                {
+                    b.HasOne("CoreFitness.Infrastructure.Persistence.Entities.MembershipEntity", "Membership")
                         .WithMany("Benefits")
                         .HasForeignKey("MembershipId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -282,11 +326,11 @@ namespace CoreFitness.Infrastructure.Migrations
                     b.Navigation("Membership");
                 });
 
-            modelBuilder.Entity("CoreFitness.Domain.Entities.Memberships.MembershipEntity", b =>
+            modelBuilder.Entity("CoreFitness.Infrastructure.Persistence.Entities.MembershipEntity", b =>
                 {
-                    b.HasOne("CoreFitness.Domain.Models.AppUser", "User")
+                    b.HasOne("CoreFitness.Infrastructure.Identity.AppUser", "User")
                         .WithOne("Membership")
-                        .HasForeignKey("CoreFitness.Domain.Entities.Memberships.MembershipEntity", "UserId")
+                        .HasForeignKey("CoreFitness.Infrastructure.Persistence.Entities.MembershipEntity", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_Memberships_Users");
@@ -305,7 +349,7 @@ namespace CoreFitness.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("CoreFitness.Domain.Models.AppUser", null)
+                    b.HasOne("CoreFitness.Infrastructure.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -314,7 +358,7 @@ namespace CoreFitness.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("CoreFitness.Domain.Models.AppUser", null)
+                    b.HasOne("CoreFitness.Infrastructure.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -329,7 +373,7 @@ namespace CoreFitness.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CoreFitness.Domain.Models.AppUser", null)
+                    b.HasOne("CoreFitness.Infrastructure.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -338,21 +382,23 @@ namespace CoreFitness.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("CoreFitness.Domain.Models.AppUser", null)
+                    b.HasOne("CoreFitness.Infrastructure.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CoreFitness.Domain.Entities.Memberships.MembershipEntity", b =>
+            modelBuilder.Entity("CoreFitness.Infrastructure.Identity.AppUser", b =>
                 {
-                    b.Navigation("Benefits");
+                    b.Navigation("Member");
+
+                    b.Navigation("Membership");
                 });
 
-            modelBuilder.Entity("CoreFitness.Domain.Models.AppUser", b =>
+            modelBuilder.Entity("CoreFitness.Infrastructure.Persistence.Entities.MembershipEntity", b =>
                 {
-                    b.Navigation("Membership");
+                    b.Navigation("Benefits");
                 });
 #pragma warning restore 612, 618
         }

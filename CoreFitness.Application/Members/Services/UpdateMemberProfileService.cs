@@ -3,6 +3,7 @@ using CoreFitness.Application.Members.Inputs;
 using CoreFitness.Domain.Abstractions.Repositories;
 using CoreFitness.Domain.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 namespace CoreFitness.Application.Members.Services;
@@ -23,21 +24,22 @@ public class UpdateMemberProfileService(IMemberRepository memberRepository, IWeb
 
             // handle file upload if a new profile file is provided, otherwise keep existing URI
 
-            string? fileName = member.ProfileImageUri; 
+            string? fileName = member.ProfileImageUri;
 
             if (input.ProfileFile != null && input.ProfileFile.Length > 0)
             {
+
                 // create a unique file name using a GUID and preserve the original file extension
 
                 fileName = $"{Guid.NewGuid()}{Path.GetExtension(input.ProfileFile.FileName)}";
 
                 // Path to wwwroot/uploads/profiles
-                var folderPath = Path.Combine(environment.WebRootPath, "uploads", "profiles");
-                var filePath = Path.Combine(folderPath, fileName);
+                var uploadFolder = Path.Combine(environment.WebRootPath, "uploads", "profiles");
+                var filePath = Path.Combine(uploadFolder, fileName);
 
                 // Create the folder if it doesn't exist
-                if (!Directory.Exists(folderPath))
-                    Directory.CreateDirectory(folderPath);
+                if (!Directory.Exists(uploadFolder))
+                    Directory.CreateDirectory(uploadFolder);
 
                 // Save the file to the server
                 using var stream = new FileStream(filePath, FileMode.Create);

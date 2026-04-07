@@ -1,7 +1,6 @@
 ﻿using CoreFitness.Application.Identity;
 using CoreFitness.Application.Members;
 using CoreFitness.Application.Members.Inputs;
-using CoreFitness.Application.Members.Services;
 using CoreFitness.WebApp.Models.Auth;
 using Microsoft.AspNetCore.Mvc;
 

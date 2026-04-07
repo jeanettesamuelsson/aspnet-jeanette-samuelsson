@@ -1,5 +1,61 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+@model MyAccountViewModel
+
+
+<h1>My Account</h1>
+
+<div id="about-section">
+    <div id="about-l-column">
+
+
+   
+        <div id="profile-img">
+            <img />
+        </div>
+
+        <div id="menu-options">
+        </div>
+
+    </div>
+
+    <div id="about-r-column">
+
+        <form class="auth-form" asp-action="UpdateProfile" asp-controller="Account" method="post" enctype="multipart/form-data" novalidate>
+            <h2 class="title">About Me</h2>
+
+            <div class="form-group">
+                <label class="form-label" asp-for="AboutMeForm.FirstName"></label>
+                <input class="form-input" asp-for="AboutMeForm.FirstName" />
+                <span class="field-validation-error" asp-validation-for="AboutMeForm.FirstName"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" asp-for="AboutMeForm.LastName"></label>
+                <input class="form-input" asp-for="AboutMeForm.LastName" />
+                <span class="field-validation-error" asp-validation-for="AboutMeForm.LastName"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" asp-for="AboutMeForm.PhoneNumber"></label>
+                <input class="form-input" asp-for="AboutMeForm.PhoneNumber" />
+                <span class="field-validation-error" asp-validation-for="AboutMeForm.PhoneNumber"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" asp-for="AboutMeForm.ProfileFile"></label>
+                <input class="form-input" asp-for="AboutMeForm.ProfileFile" type="file" accept="image/*" />
+                <span class="field-validation-error" asp-validation-for="AboutMeForm.ProfileFile"></span>
+            </div>
+
+            <button type="submit">
+                <span>Save changes</span>
+                <i class="fa-solid fa-save"></i>
+            </button>
+
+        </form>
+       
+        
+    </div>
+
+
+</div>

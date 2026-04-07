@@ -13,6 +13,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoreFitness.Domain\CoreFitness.Domain.csproj" />
+
+	  
   </ItemGroup>
+
+    <ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
 
 </Project>

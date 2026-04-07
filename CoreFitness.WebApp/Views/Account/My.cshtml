@@ -7,10 +7,17 @@
 <div id="about-section">
     <div id="about-l-column">
 
-
-   
-        <div id="profile-img">
-            <img />
+        <div id="profile-img-container">
+            @if (!string.IsNullOrEmpty(Model.AboutMeForm.ProfileImageUri))
+            { 
+                <img id="profile-image" src="@Model.AboutMeForm.ProfileImageUri" alt="Profile Image" />
+            }
+            else
+            {
+                <div id="camera-icon">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+            }
         </div>
 
         <div id="menu-options">
@@ -59,3 +66,4 @@
 
 
 </div>
+

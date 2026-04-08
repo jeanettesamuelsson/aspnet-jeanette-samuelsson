@@ -1,5 +1,4 @@
-﻿
-@model MyAccountViewModel
+﻿@model MyAccountViewModel
 
 
 <h1>My Account</h1>
@@ -9,7 +8,7 @@
 
         <div id="profile-img-container">
             @if (!string.IsNullOrEmpty(Model.AboutMeForm.ProfileImageUri))
-            { 
+            {
                 <img id="profile-image" src="@Model.AboutMeForm.ProfileImageUri" alt="Profile Image" />
             }
             else
@@ -21,11 +20,20 @@
         </div>
 
         <div id="menu-options">
+            <div class="menu-header">Menu Options</div>
+            <ul>
+                <li><a href="#">About Me <i class="fa-solid fa-chevron-right"></i></a></li>
+                <li><a href="#">My Membership <i class="fa-solid fa-chevron-right"></i></a></li>
+                <li><a href="#">My Bookings <i class="fa-solid fa-chevron-right"></i></a></li>
+                <li><a href="#">Sign Out <i class="fa-solid fa-chevron-right"></i></a></li>
+            </ul>
         </div>
+        <p class="remove-account">If you like to cancel your account click below <br> <a href="#">Remove Account</a></p>
 
     </div>
 
     <div id="about-r-column">
+
 
         <form class="auth-form" asp-action="UpdateProfile" asp-controller="Account" method="post" enctype="multipart/form-data" novalidate>
             <h2 class="title">About Me</h2>
@@ -60,10 +68,45 @@
             </button>
 
         </form>
-       
         
+        <div class="statistics-card">
+            <h3>My Statistics</h3>
+
+            <div class="stat-item">
+                <div class="stat-info">
+                    <span>Check-In (last 30 days)</span>
+                    <span>25</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 90%;"></div>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-info">
+                    <span>Weight Goal</span>
+                    <span>50%</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 50%;"></div>
+                </div>
+            </div>
+        
+            <div class="stat-item">
+                <div class="stat-info">
+                    <span>Current BMI</span>
+                    <span>27</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+
+        </div>
+
+
     </div>
 
+ 
 
 </div>
-

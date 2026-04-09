@@ -20,6 +20,7 @@ public static class ApplicationServiceCollectionRegistrationExtensions
         services.AddScoped<IGetMemberProfileService, GetMemberProfileService>();
         services.AddScoped<ISignInMemberService, SignInMemberService>();
         services.AddScoped<IUpdateMemberProfileService, UpdateMemberProfileService>();
+        services.AddScoped<IDeleteMemberService, DeleteMemberService>();
 
 
         return services;

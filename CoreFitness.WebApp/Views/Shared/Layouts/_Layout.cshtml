@@ -30,6 +30,19 @@
 
     
         <main>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="status-message-alert">
+                    <div class="status-message-content">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>@TempData["SuccessMessage"]</span>
+                    </div>
+                    <button type="button" class="close-alert-btn" onclick="this.parentElement.style.display='none';">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            }
             
             @RenderBody()
             

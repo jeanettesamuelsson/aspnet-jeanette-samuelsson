@@ -27,6 +27,10 @@ public static class IdentityRegistrationExtension
         {
             options.LoginPath = "/authentication/sign-in";
             options.AccessDeniedPath = "/authentication/sign-in";
+
+            //make sure tempData survives an redirection
+            options.Cookie.IsEssential = true;
+            options.Cookie.HttpOnly = true;
         });
 
         //register services

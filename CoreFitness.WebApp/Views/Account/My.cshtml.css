@@ -206,26 +206,9 @@
         }
 
      
-.remove-account {
-    text-align: center;
-    font-size: 0.75rem;
-    color: #64748b;
-    margin-top: 1.5rem;
-    line-height: 1.5;
-}
-
-    .remove-account a {
-        color: #ef4444; 
-        font-weight: 700;
-        text-decoration: none;
-    }
-
-        .remove-account a:hover {
-            text-decoration: underline;
-        }
-
-
 /*#endregion */
+
+/*#region statiistics card*/
 
 .statistics-card {
     padding: 0 3rem; 
@@ -265,3 +248,37 @@
     height: 100%;
     border-radius: 10px;
 }
+
+/*#endregion */
+
+/* #region remove button  */
+
+.remove-account-container {
+    text-align: center; 
+   
+}
+
+    .remove-account-container p {
+        margin-bottom: 0.5rem;
+        font-size: 0.7rem;
+        color: #666;
+    }
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: red;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s;
+}
+
+    .btn-remove:hover {
+        transform: scale(1.05); 
+        color: darkred;
+    }
+
+
+/* #endregion  */

@@ -11,7 +11,9 @@ namespace CoreFitness.WebApp.Controllers
     public class AccountController(
     IGetMemberProfileService getMemberProfileService,
     IUpdateMemberProfileService updateMemberProfileService,
-    UserManager<AppUser> userManager
+    IDeleteMemberService deleteMemberService,
+    UserManager<AppUser> userManager,
+    SignInManager<AppUser> signInManager
 
              ) : Controller
 
@@ -64,19 +66,29 @@ namespace CoreFitness.WebApp.Controllers
 
 
 
-        //    [HttpPost]
-        //    [Authorize]
-        //    public async Task<IActionResult> DeleteProfile(CancellationToken ct)
-        //    {
-        //        //get id
+        [HttpPost]
+        public async Task<IActionResult> DeleteAccount(CancellationToken ct)
+        {
+            //get id
 
-        //        //var userId = userManager.GetUserId(User);
-        //        //var result = await deleteMemberService.ExecuteAsync(userId);
+            var userId = userManager.GetUserId(User);
+            var result = await deleteMemberService.ExecuteAsync(userId, ct);
+
+            // if success, sign out and redirect to home page with success message
+            if (result.Success)
+            {
+                await signInManager.SignOutAsync();
+
+                TempData ["SuccessMessage"] = "Your account has been deleted successfully.";
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            // redirect to account page if deleting account failed
+            return RedirectToAction("My");
 
 
-
-
-        //    }
+        }
 
 
     }

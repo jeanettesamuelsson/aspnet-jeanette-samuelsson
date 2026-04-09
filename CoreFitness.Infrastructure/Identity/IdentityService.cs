@@ -25,11 +25,32 @@ public class IdentityService(UserManager<AppUser> userManager, SignInManager<App
         var result = await userManager.CreateAsync(user, password);
 
         // if result is not succeeded -> return result with error, else return result with OK
-        return !result.Succeeded ? Result<string?>.Error() : Result<string?>.Ok(user.Id);
+        if (!result.Succeeded) 
+            return Result<string?>.Error();
 
+        return Result<string?>.Ok(user.Id);
 
     }
 
+    public async Task<Result> DeleteUserAsync(string userId, CancellationToken ct = default)
+    {
+        // get user from user manager 
+
+        var user = await userManager.FindByIdAsync(userId); 
+
+        if (user is null) 
+            return Result.NotFound("User not found.");
+
+        var result = await userManager.DeleteAsync(user);
+
+        // if result is not succeeded -> return result with error, else return result with OK
+        if (!result.Succeeded)
+            return Result.Error("Failed to delete user.");
+
+        return Result.Ok();
+
+
+    }
 
     public async Task<Result<bool>> PasswordSignInAsync(string email, string password, bool rememberMe, CancellationToken ct = default)
     {

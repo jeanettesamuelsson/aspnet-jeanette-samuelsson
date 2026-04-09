@@ -11,5 +11,7 @@ public interface IIdentityService
 
     Task SignOutAsync(CancellationToken ct = default);
 
+    Task<Result> DeleteUserAsync(string userId, CancellationToken ct = default);
+
 }
  

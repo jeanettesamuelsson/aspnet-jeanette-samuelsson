@@ -11,7 +11,7 @@ namespace CoreFitness.WebApp.Controllers
     public class AccountController(
     IGetMemberProfileService getMemberProfileService,
     IUpdateMemberProfileService updateMemberProfileService,
-    UserManager<AppUser> userManager 
+    UserManager<AppUser> userManager
 
              ) : Controller
 
@@ -54,14 +54,33 @@ namespace CoreFitness.WebApp.Controllers
                 model.AboutMeForm.FirstName,
                 model.AboutMeForm.LastName,
                 model.AboutMeForm.PhoneNumber,
-                model.AboutMeForm.ProfileFile 
+                model.AboutMeForm.ProfileFile
             );
 
             await updateMemberProfileService.ExecuteAsync(input);
 
             return RedirectToAction("My");
         }
+
+
+
+        //    [HttpPost]
+        //    [Authorize]
+        //    public async Task<IActionResult> DeleteProfile(CancellationToken ct)
+        //    {
+        //        //get id
+
+        //        //var userId = userManager.GetUserId(User);
+        //        //var result = await deleteMemberService.ExecuteAsync(userId);
+
+
+
+
+        //    }
+
+
     }
 
-
 }
+
+        

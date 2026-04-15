@@ -1,5 +1,6 @@
 ﻿using CoreFitness.Application.Members.Inputs;
 using CoreFitness.Application.Members.Services;
+using CoreFitness.Infrastrcuture.Models;
 using CoreFitness.Infrastructure.Identity;
 using CoreFitness.WebApp.Models.Account;
 using Microsoft.AspNetCore.Authorization;
@@ -90,7 +91,49 @@ namespace CoreFitness.WebApp.Controllers
 
         }
 
+        [Authorize]
+        [HttpGet("my/membership")]
+        public async Task<IActionResult> Membership(CancellationToken ct)
+        {
+            var userId = userManager.GetUserId(User);
 
+            var memberResult = await getMemberProfileService.ExecuteAsync(userId!, ct);
+
+            if (!memberResult.Success || memberResult.Value == null)
+                return NotFound();
+
+            var member = memberResult.Value;
+
+            var viewModel = new MyMembershipViewModel
+            {
+                // map from domain object to viewmodel 
+              
+                CurrentPlan = member.CurrentMembership != null
+                    ? MapToCardViewModel(member.CurrentMembership)
+                    : null,
+
+                MemberSince = member.CreatedAt,
+
+                // Här kan du senare lägga till AvailablePlans genom att anropa en GetMembershipsService
+                AvailablePlans = new List<MembershipCardViewModel>()
+            };
+
+            return View(viewModel);
+        }
+
+        // Helper-metod för att mappa från Domän -> ViewModel
+        private MembershipCardViewModel MapToCardViewModel(Membership domain)
+        {
+            return new MembershipCardViewModel
+            {
+                Id = domain.Id,
+                Title = domain.Title,
+                Description = domain.Description,
+                Price = domain.Price.ToString("F2"), 
+                Benefits = domain.Benefits,
+              
+            };
+        }
     }
 
 }

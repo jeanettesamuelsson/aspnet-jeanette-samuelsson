@@ -7,7 +7,7 @@
     color: var(--text-primary);
 }
 
-#about-section {
+.about-section {
     display: flex;
     gap: 5rem;
     max-width: 1100px;
@@ -16,14 +16,14 @@
     align-items: start;
 }
 
-#about-l-column {
+.about-l-column {
     width: 30%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-#profile-img-container {
+.profile-img-container {
     width: 100%;
     height: auto;
     min-height: 300px;
@@ -37,20 +37,20 @@
     border-radius: 15px;
 }
 
-    #profile-img-container img {
+    .profile-img-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 
-    #profile-img-container i {
+    .profile-img-container i {
         font-size: 2rem;
         color: #6366f1;
     }
 
 
 
-#about-r-column .form-input {
+.about-r-column .form-input {
     padding: 12px 15px;
     border: 1px solid #eee;
     background-color: hotpink !important; 
@@ -63,7 +63,7 @@
         border-color: #d2f34c;
     }
 
-#about-r-column {
+.about-r-column {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -74,12 +74,12 @@
 
 /*#region form*/
 
-#about-r-column .auth-form {
+.about-r-column .auth-form {
         height: auto;
         background-color: #FFFFFF;
         padding: 2rem 3rem;
         border-radius: 25px;
-        width: 100%;
+        width: 100%;.
         max-width: 900px;
         text-align: left;
         display: flex;
@@ -87,31 +87,31 @@
         gap: 1rem;
     }
 
-#about-r-column .auth-form .title {
+.about-r-column .auth-form .title {
             font-weight: 500;
             margin-bottom: 10px;
             color: #000;
      }
-#about-r-column .auth-form p {
+.about-r-column .auth-form p {
             color: #666;
             font-size: 0.9rem;
             line-height: 1.5;
             margin-bottom: 20px;
         }
- #about-r-column .form-group {
+ .about-r-column .form-group {
         display: flex;
         flex-direction: column;
         text-align: left;
         margin-bottom: 20px;
     }
 
- #about-r-column .form-label {
+ .about-r-column .form-label {
         font-weight: 600;
         margin-bottom: 8px;
         font-size: 0.85rem;
     }
 
-    #about-r-column button {
+    .about-r-column button {
         background-color: var(--green-color);
         color: var(--primary-text-color);
         border: none;
@@ -129,30 +129,30 @@
         transition: transform 0.1s;
     }
 
-        #about-r-column button i {
+        .about-r-column button i {
             position: absolute;
             right: 25px;
             font-size: 1.1rem;
         }
 
-        #about-r-column button:active {
+        .about-r-column button:active {
             transform: scale(0.98);
         }
 
-    #about-r-column .checkbox {
+    .about-r-column .checkbox {
         flex-direction: row;
         align-items: center;
         gap: 10px;
         font-size: 0.85rem;
     }
 
-    #about-r-column .field-validation-error {
+    .about-r-column .field-validation-error {
         color: #e74c3c;
         font-size: 0.75rem;
         margin-top: 5px;
     }
 
-    #about-r-column hr {
+    .about-r-column hr {
         width: 80%;
         opacity: 0.2;
     }
@@ -161,7 +161,7 @@
 
  /* #region  menu-options */
 
-#menu-options {
+.menu-options {
     background: #fff;
     border-radius: 15px; 
     width: 100%;
@@ -177,21 +177,21 @@
     color: var(--primary-text-color);
 }
 
-#menu-options ul {
+.menu-options ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#menu-options li {
+.menu-options li {
     border-bottom: 1px solid var(--primary-bg-color); 
 }
 
-    #menu-options li:last-child {
+    .menu-options li:last-child {
         border-bottom: none; 
     }
 
-    #menu-options li a {
+    .menu-options li a {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -201,7 +201,7 @@
   
     }
 
-        #menu-options li a:hover {
+        .menu-options li a:hover {
             color: var(--green-color);
         }
 

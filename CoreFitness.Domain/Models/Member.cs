@@ -22,6 +22,8 @@ public sealed class Member
      public string? ProfileImageUri { get; private set; }
      public DateTime CreatedAt { get; private set; }
      public DateTime? UpdatedAt { get; private set; }
+     public string? CurrentMembershipId { get; private set; }
+    
 
 
 
@@ -43,20 +45,41 @@ public sealed class Member
         UpdatedAt = DateTime.UtcNow;
     }
 
+    public void SetMembership(string membershipId)
+    {
+        CurrentMembershipId = Required(membershipId, nameof(membershipId));
+        UpdatedAt = DateTime.UtcNow;
+    }
+
 
     // create and rehydrate
-    public static Member Create(string userId)
+    public static Member Create(string userId, string? initialMembershipId = null)
     {
-        return new Member(
+        var member = new Member(
             Guid.NewGuid().ToString(),
             userId,
             DateTime.UtcNow
-            
-            );
+        );
+
+        if (!string.IsNullOrEmpty(initialMembershipId))
+        {
+            member.SetMembership(initialMembershipId);
+        }
+
+        return member;
     }
 
     //rehydrate (existing from database) does not generate a new guid 
-    public static Member Rehydrate(string id, string userId, string? firstName, string? lastName, string? phoneNumber, string? profileImageUri, DateTime createdAt, DateTime? updatedAt)
+    public static Member Rehydrate(
+        string id, 
+        string userId, 
+        string? firstName, 
+        string? lastName, 
+        string? phoneNumber, 
+        string? profileImageUri, 
+        DateTime createdAt, 
+        DateTime? updatedAt,
+        string? currentMembershipId)
     {
         var member = new Member(id, userId, createdAt)
         {
@@ -64,7 +87,8 @@ public sealed class Member
             LastName = lastName,
             PhoneNumber = phoneNumber,
             ProfileImageUri = profileImageUri,
-            UpdatedAt = updatedAt
+            UpdatedAt = updatedAt,
+            CurrentMembershipId = currentMembershipId
         };
 
         return member;

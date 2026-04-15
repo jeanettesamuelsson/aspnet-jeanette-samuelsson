@@ -2,7 +2,7 @@
 
 namespace CoreFitness.Infrastrcuture.Models;
 
-//Domain model for Membership. This model includes properties such as Title, Description, Benefits, Price, and MonthlyClasses. It also includes validation logic to ensure that required fields are provided and that the price is not negative. The Create method allows for easy instantiation of new Membership objects, while the Rehydrate method can be used to reconstruct a Membership from existing data.
+//Domain model/ Aggregate for Membership. This model includes properties such as Title, Description, Benefits, Price, and MonthlyClasses. It also includes validation logic to ensure that required fields are provided and that the price is not negative. The Create method allows for easy instantiation of new Membership objects, while the Rehydrate method can be used to reconstruct a Membership from existing data.
 public sealed class Membership
 {
 

@@ -118,6 +118,21 @@ namespace CoreFitness.WebApp.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> UpdateMembershipPlan(string membershipId, CancellationToken ct)
+        {
+            if (string.IsNullOrEmpty(membershipId))
+            {
+                return RedirectToAction("Membership");
+            }
+
+            var userId = userManager.GetUserId(User);
+
+            TempData["SuccessMessage"] = "Your membership has been updated!";
+            return RedirectToAction("Membership");
+        }
+
         // map from Domain to viewModel
         private MembershipCardViewModel MapToCardViewModel(Membership domain)
         {
@@ -131,7 +146,36 @@ namespace CoreFitness.WebApp.Controllers
               
             };
         }
+
+
+        [Authorize]
+        [HttpGet("my/bookings")]
+        public async Task<IActionResult> Bookings(CancellationToken ct)
+        {
+            var userId = userManager.GetUserId(User);
+
+            // create service to handle users class bookings
+            // var bookings = await getMemberBookingsService.ExecuteAsync(userId, ct);
+
+            var viewModel = new MyBookingsViewModel
+            {
+                // Mappa dina bokningar här
+                BookedClasses = new List<BookedClassViewModel>()
+            };
+
+            return View(viewModel);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
+
+
 
 }
 

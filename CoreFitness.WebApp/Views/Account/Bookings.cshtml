@@ -1,0 +1,105 @@
+﻿@model MyBookingsViewModel
+
+
+<h1>My Bookings</h1>
+
+<div class="about-section">
+    <div class="about-l-column">
+
+        <div class="menu-options">
+            <div class="menu-header">Menu Options</div>
+            <ul>
+                <li>
+                    <a asp-controller="Account" asp-action="My">
+                        About Me <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-controller="Account" asp-action="MyMembership">
+                        My Membership <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-controller="Account" asp-action="Bookings">
+                        My Bookings <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" style="display:inline;">
+                        <a href="javascript:void(0)" onclick="document.getElementById('logoutForm').submit();">
+                            Sign Out <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="remove-account-container">
+            <p>If you would like to cancel your account, click below</p>
+
+            <form asp-action="DeleteAccount" asp-controller="Account" method="post"
+                  onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
+                <button type="submit" class="btn-remove">
+                    Remove Account
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="about-r-column">
+
+        <div class="my-classes">
+
+            <h2>My Classes</h2>
+    
+          @*   loop through classes and display them here, for now just static text *@
+            <p>
+                Class A
+            </p>
+
+            <p>
+                Class B
+            </p>
+    
+
+            <p>
+                Class C
+            </p>
+    
+    
+        </div>
+
+        <div class="available-classes">
+
+            <h2>Available Classes</h2>
+    
+            @*   loop through classes and display them here, for now just static text *@
+            <p>
+                Class D
+                Name
+                Date
+            </p>
+
+            <p>
+                Class E
+            </p>
+    
+
+            <p>
+                Class F
+            </p>
+    
+    
+        </div>
+
+
+
+    </div>
+
+</div>
+

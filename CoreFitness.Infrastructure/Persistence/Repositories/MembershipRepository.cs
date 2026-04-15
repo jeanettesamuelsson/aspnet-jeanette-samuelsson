@@ -14,7 +14,11 @@ public sealed class MembershipRepository(DataContext context)
 {
     protected override void ApplyPropertyUpdates(MembershipEntity entity, Membership model)
     {
-        throw new NotImplementedException();
+        entity.Title = model.Title;
+        entity.Description = model.Description;
+        entity.Price = model.Price;
+        entity.MonthlyClasses = model.MonthlyClasses;
+        entity.Benefits = model.Benefits;
     }
 
     protected override string GetId(Membership model)
@@ -24,47 +28,29 @@ public sealed class MembershipRepository(DataContext context)
 
     protected override Membership ToDomainModel(MembershipEntity entity)
     {
-
-        var benefits = new List<string>();
-        foreach (var item in entity.Benefits)
-            benefits.Add(item.Benefit);
-
-
-        var model = Membership.Rehydrate(
+        return Membership.Rehydrate(
             entity.Id,
             entity.Title,
             entity.Description,
-            benefits,
+            entity.Benefits,
             entity.Price,
             entity.MonthlyClasses);
-
-        return model;
     }
 
     protected override MembershipEntity ToEntity(Membership model)
     {
-        var entity = new MembershipEntity
+        return new MembershipEntity
         {
             Id = model.Id,
             Title = model.Title,
             Description = model.Description,
             Price = model.Price,
             MonthlyClasses = model.MonthlyClasses,
-            Benefits = new List<MembershipBenefitEntity>()
+            Benefits = model.Benefits
 
         };
 
-        foreach (var benefit in model.Benefits)
-        {
-            entity.Benefits.Add(new MembershipBenefitEntity
-            {
-                Id = Guid.NewGuid().ToString(),
-                MembershipId = entity.Id,
-                Benefit = benefit
-            });
-        }
-
-        return entity;
+        
     }
 
 }

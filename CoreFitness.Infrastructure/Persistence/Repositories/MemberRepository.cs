@@ -1,5 +1,6 @@
 ﻿using CoreFitness.Domain.Abstractions.Repositories;
 using CoreFitness.Domain.Models;
+using CoreFitness.Infrastrcuture.Models;
 using CoreFitness.Infrastructure.Persistence.Data;
 using CoreFitness.Infrastructure.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -55,7 +56,10 @@ public class MemberRepository(DataContext context) :
             entity.PhoneNumber,
             entity.ProfileImageUri,
             entity.CreatedAt,
-            entity.UpdatedAt
+            entity.UpdatedAt,
+            entity.CurrentMembership != null ? MapMembershipToDomain(entity.CurrentMembership) : null,
+            entity.CurrentMembershipId
+
             );
 
         return model;
@@ -76,5 +80,17 @@ public class MemberRepository(DataContext context) :
         };
 
         return entity;
+    }
+
+    private Membership MapMembershipToDomain(MembershipEntity entity)
+    {
+        return Membership.Rehydrate(
+            entity.Id,
+            entity.Title,
+            entity.Description,
+            entity.Benefits, 
+            entity.Price,
+            entity.MonthlyClasses
+        );
     }
 }

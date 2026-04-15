@@ -1,4 +1,6 @@
-﻿namespace CoreFitness.Domain.Models;
+﻿using CoreFitness.Infrastrcuture.Models;
+
+namespace CoreFitness.Domain.Models;
 
 public sealed class Member
 {
@@ -23,7 +25,9 @@ public sealed class Member
      public DateTime CreatedAt { get; private set; }
      public DateTime? UpdatedAt { get; private set; }
      public string? CurrentMembershipId { get; private set; }
-    
+
+    public Membership? CurrentMembership { get; private set; }
+
 
 
 
@@ -79,6 +83,7 @@ public sealed class Member
         string? profileImageUri, 
         DateTime createdAt, 
         DateTime? updatedAt,
+        Membership? currentMembership,
         string? currentMembershipId)
     {
         var member = new Member(id, userId, createdAt)
@@ -88,7 +93,8 @@ public sealed class Member
             PhoneNumber = phoneNumber,
             ProfileImageUri = profileImageUri,
             UpdatedAt = updatedAt,
-            CurrentMembershipId = currentMembershipId
+            CurrentMembershipId = currentMembershipId,
+            CurrentMembership = currentMembership
         };
 
         return member;

@@ -6,29 +6,36 @@
 <div class="about-section">
     <div class="about-l-column">
 
-        <div class="profile-img-container">
-            @if (!string.IsNullOrEmpty(Model.AboutMeForm.ProfileImageUri))
-            {
-                <img class="profile-image" src="@Model.AboutMeForm.ProfileImageUri" alt="Profile Image" />
-            }
-            else
-            {
-                <div class="camera-icon">
-                    <i class="fa-solid fa-camera"></i>
-                </div>
-            }
-        </div>
-
         <div class="menu-options">
             <div class="menu-header">Menu Options</div>
             <ul>
-                <li><a href="#">About Me <i class="fa-solid fa-chevron-right"></i></a></li>
-                <li><a href="#">My Membership <i class="fa-solid fa-chevron-right"></i></a></li>
-                <li><a href="#">My Bookings <i class="fa-solid fa-chevron-right"></i></a></li>
-                <li><a href="#">Sign Out <i class="fa-solid fa-chevron-right"></i></a></li>
+                <li>
+                    <a asp-controller="Account" asp-action="My">
+                        About Me <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-controller="Account" asp-action="MyMembership">
+                        My Membership <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-controller="Account" asp-action="Bookings">
+                        My Bookings <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-controller="Auth" asp-action="Logout">
+                        Sign Out <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
             </ul>
         </div>
-        
+
+
         <div class="remove-account-container">
             <p>If you would like to cancel your account, click below</p>
 
@@ -56,43 +63,6 @@
             <a href="#" class="signin-btn">Manage Membership <i class="fa-solid fa-chevron-right"></i></a>
         </div>
 
-
-       
-        
-        <div class="statistics-card">
-            <h3>My Statistics</h3>
-
-            <div class="stat-item">
-                <div class="stat-info">
-                    <span>Check-In (last 30 days)</span>
-                    <span>25</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 90%;"></div>
-                </div>
-            </div>
-
-            <div class="stat-item">
-                <div class="stat-info">
-                    <span>Weight Goal</span>
-                    <span>50%</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 50%;"></div>
-                </div>
-            </div>
-        
-            <div class="stat-item">
-                <div class="stat-info">
-                    <span>Current BMI</span>
-                    <span>27</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 70%;"></div>
-                </div>
-            </div>
-
-        </div>
 
 
     </div>

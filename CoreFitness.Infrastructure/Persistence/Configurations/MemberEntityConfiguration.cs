@@ -20,6 +20,9 @@ public class MemberEntityConfiguration : IEntityTypeConfiguration<MemberEntity>
         builder.HasIndex(x => x.UserId)
             .IsUnique();
 
+        builder.Property(x => x.CurrentMembershipId)
+           .IsRequired(false);
+
         builder.Property(x => x.FirstName)
             .HasMaxLength(100);
 
@@ -44,5 +47,12 @@ public class MemberEntityConfiguration : IEntityTypeConfiguration<MemberEntity>
             .HasForeignKey<MemberEntity>(x => x.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        builder
+            .HasOne(x => x.CurrentMembership) 
+            .WithMany()                      
+            .HasForeignKey(x => x.CurrentMembershipId)
+            .OnDelete(DeleteBehavior.Restrict); 
     }
+
 }
+

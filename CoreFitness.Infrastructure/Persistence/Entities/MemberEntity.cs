@@ -14,7 +14,9 @@ public class MemberEntity
 
     public DateTime CreatedAt { get; set;  } 
     public DateTime? UpdatedAt { get; set; }
-    public string? CurrentMembershipId { get; set; } 
+    public string? CurrentMembershipId { get; set; }
+
+    public MembershipEntity? CurrentMembership { get; set; }
     public AppUser User { get; set; } = null!;
 
 

@@ -3,29 +3,48 @@
 
 <h1>My Account</h1>
 
-<div id="about-section">
-    <div id="about-l-column">
+<div class="about-section">
+    <div class="about-l-column">
 
-        <div id="profile-img-container">
+        <div class="profile-img-container">
             @if (!string.IsNullOrEmpty(Model.AboutMeForm.ProfileImageUri))
             {
-                <img id="profile-image" src="@Model.AboutMeForm.ProfileImageUri" alt="Profile Image" />
+                <img class="profile-image" src="@Model.AboutMeForm.ProfileImageUri" alt="Profile Image" />
             }
             else
             {
-                <div id="camera-icon">
+                <div class="camera-icon">
                     <i class="fa-solid fa-camera"></i>
                 </div>
             }
         </div>
 
-        <div id="menu-options">
+        <div class="menu-options">
             <div class="menu-header">Menu Options</div>
             <ul>
-                <li><a href="#">About Me <i class="fa-solid fa-chevron-right"></i></a></li>
-                <li><a href="#">My Membership <i class="fa-solid fa-chevron-right"></i></a></li>
-                <li><a href="#">My Bookings <i class="fa-solid fa-chevron-right"></i></a></li>
-                <li><a href="#">Sign Out <i class="fa-solid fa-chevron-right"></i></a></li>
+                <li>
+                    <a asp-controller="Account" asp-action="My">
+                        About Me <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-controller="Account" asp-action="MyMembership">
+                        My Membership <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-controller="Account" asp-action="Bookings">
+                        My Bookings <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-controller="Auth" asp-action="Logout">
+                        Sign Out <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </li>
             </ul>
         </div>
         
@@ -42,7 +61,7 @@
 
         </div>
 
-    <div id="about-r-column">
+    <div class="about-r-column">
 
 
         <form class="auth-form" asp-action="UpdateProfile" asp-controller="Account" method="post" enctype="multipart/form-data" novalidate>

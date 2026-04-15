@@ -93,7 +93,7 @@ namespace CoreFitness.WebApp.Controllers
 
         [Authorize]
         [HttpGet("my/membership")]
-        public async Task<IActionResult> Membership(CancellationToken ct)
+        public async Task<IActionResult> MyMembership(CancellationToken ct)
         {
             var userId = userManager.GetUserId(User);
 
@@ -112,16 +112,13 @@ namespace CoreFitness.WebApp.Controllers
                     ? MapToCardViewModel(member.CurrentMembership)
                     : null,
 
-                MemberSince = member.CreatedAt,
-
-                // Här kan du senare lägga till AvailablePlans genom att anropa en GetMembershipsService
                 AvailablePlans = new List<MembershipCardViewModel>()
             };
 
             return View(viewModel);
         }
 
-        // Helper-metod för att mappa från Domän -> ViewModel
+        // map from Domain to viewModel
         private MembershipCardViewModel MapToCardViewModel(Membership domain)
         {
             return new MembershipCardViewModel

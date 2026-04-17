@@ -7,6 +7,14 @@
     <UserSecretsId>c8b344fb-ccd0-4794-aacf-34516372bd6b</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702; NU1903</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702; NU1903</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="wwwroot\css\account.css" />
   </ItemGroup>

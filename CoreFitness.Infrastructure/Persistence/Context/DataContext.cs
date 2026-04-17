@@ -13,6 +13,8 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     public DbSet<MembershipEntity> Memberships => Set<MembershipEntity>();
     public DbSet<MembershipBenefitEntity> MembershipBenefits => Set<MembershipBenefitEntity>();
     public DbSet<MemberEntity> Members => Set<MemberEntity>();
+    public DbSet<BookingEntity> Bookings => Set<BookingEntity>();
+    public DbSet<GymClassEntity> GymClasses => Set<GymClassEntity>();
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

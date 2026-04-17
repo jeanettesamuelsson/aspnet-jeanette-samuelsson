@@ -4,9 +4,9 @@ using System.Text;
 
 namespace CoreFitness.Domain.Models;
 
-public sealed class Class
+public sealed class GymClass
 {
-    private Class(string id, string name, DateTime scheduledTime)
+    private GymClass(string id, string name, DateTime scheduledTime)
     {
         Id = Required(id, nameof(id));
         Name = Required(name, nameof(name));
@@ -21,9 +21,9 @@ public sealed class Class
     public int Capacity { get; private set; }
 
     // admin function to create new classes, and rehydrate existing ones from the database
-    public static Class Create(string name, string? instructor, string? category, DateTime scheduledTime, int Capacity)
+    public static GymClass Create(string name, string? instructor, string? category, DateTime scheduledTime, int Capacity)
     {
-        return new Class(Guid.NewGuid().ToString(), name, scheduledTime)
+        return new GymClass(Guid.NewGuid().ToString(), name, scheduledTime)
         {
             Instructor = instructor,
             Category = category,
@@ -31,9 +31,9 @@ public sealed class Class
         };
     }
 
-    public static Class Rehydrate(string id, string name, string? instructor, string? category, DateTime scheduledTime, int Capacity)
+    public static GymClass Rehydrate(string id, string name, string? instructor, string? category, DateTime scheduledTime, int Capacity)
     {
-        return new Class(id, name, scheduledTime)
+        return new GymClass(id, name, scheduledTime)
         {
             Instructor = instructor,
             Category = category,

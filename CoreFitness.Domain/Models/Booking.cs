@@ -6,21 +6,21 @@ namespace CoreFitness.Domain.Models;
 
 public sealed class Booking
 {
-    private Booking(string id, string memberId, string gymClassId, DateTime bookedAt)
+    private Booking(string id, string memberId, string GymClassId, DateTime bookedAt)
     {
         Id = Required(id, nameof(id));
         MemberId = Required(memberId, nameof(memberId));
-        GymClassId = Required(gymClassId, nameof(gymClassId));
+        ClassId = Required(GymClassId, nameof(GymClassId));
         BookedAt = bookedAt;
     }
 
     public string Id { get; private set; } = null!;
     public string MemberId { get; private set; } = null!;
-    public string GymClassId { get; private set; } = null!;
+    public string ClassId { get; private set; } = null!;
     public DateTime BookedAt { get; private set; }
 
     // Navigation properties 
-    public Class? GymClass { get; private set; }
+    public GymClass? GymClass { get; private set; }
 
     public static Booking Create(string memberId, string gymClassId)
     {
@@ -32,12 +32,14 @@ public sealed class Booking
         );
     }
 
-    public static Booking Rehydrate(string id, string memberId, string gymClassId, DateTime bookedAt, Class? gymClass = null)
+    public static Booking Rehydrate(string id, string memberId, string gymClassId, DateTime bookedAt, GymClass? gymClass = null)
     {
         return new Booking(id, memberId, gymClassId, bookedAt)
         {
-            GymClass = gymClass
+            GymClass = gymClass,
+
         };
+
     }
 
     private static string Required(string value, string propertyName)

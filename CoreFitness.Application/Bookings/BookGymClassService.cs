@@ -6,9 +6,11 @@ using CoreFitness.Domain.Models;
 namespace CoreFitness.Application.Bookings;
 
 public class BookGymClassService(
+
     IBookingRepository bookingRepository,
     IMemberRepository memberRepository,
     IGymClassRepository gymClassRepository) : IBookGymClassService
+
 {
     public async Task<Result<bool>> ExecuteAsync(string userId, string gymClassId, CancellationToken ct = default)
     {

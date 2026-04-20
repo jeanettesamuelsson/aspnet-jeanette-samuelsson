@@ -3,9 +3,8 @@ using CoreFitness.Domain.Models;
 using CoreFitness.Infrastrcuture.Abstractions.Repositories;
 using CoreFitness.Infrastructure.Persistence.Data;
 using CoreFitness.Infrastructure.Persistence.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace CoreFitness.Infrastructure.Persistence.Repositories;
 
@@ -14,11 +13,26 @@ public class GymClassRepository(DataContext context) :
     RepositoryBase<GymClass, string, GymClassEntity, DataContext>(context),
     IGymClassRepository
 {
-    public Task<IEnumerable<GymClass>> GetClassesByDateAsync(DateTime date, CancellationToken ct = default)
+    //metod to get gym classes on a specifik date, ordered by scheduled time
+    public async Task<IEnumerable<GymClass>> GetClassesByDateAsync(DateTime date, CancellationToken ct = default)
     {
-        throw new NotImplementedException();
+        try
+        { 
+            var entities = await Set
+                .Where(x => x.ScheduledTime.Date == date.Date)
+                .OrderBy(x => x.ScheduledTime)
+                .ToListAsync(ct);
+
+            return entities.Select(ToDomainModel);
+        }
+        catch
+        {
+            throw;
+        }
     }
 
+    //method to check if a gym class is available for booking, based on its capacity and the number of bookings
+    //implement later????
     public Task<bool> IsAvailableAsync(string gymClassId, CancellationToken ct = default)
     {
         throw new NotImplementedException();
@@ -26,21 +40,41 @@ public class GymClassRepository(DataContext context) :
 
     protected override void ApplyPropertyUpdates(GymClassEntity entity, GymClass model)
     {
-        throw new NotImplementedException();
+        entity.Name = model.Name;
+        entity.Instructor = model.Instructor;
+        entity.Category = model.Category;
+        entity.ScheduledTime = model.ScheduledTime;
+        entity.Capacity = model.Capacity;
     }
 
     protected override string GetId(GymClass model)
     {
-        throw new NotImplementedException();
+        return model.Id;
     }
 
     protected override GymClass ToDomainModel(GymClassEntity entity)
     {
-        throw new NotImplementedException();
+        return GymClass.Rehydrate(
+            entity.Id,
+            entity.Name,
+            entity.Instructor,
+            entity.Category,
+            entity.ScheduledTime,
+            entity.Capacity
+        );
+
     }
 
     protected override GymClassEntity ToEntity(GymClass model)
     {
-        throw new NotImplementedException();
+        return new GymClassEntity
+        {
+            Id = model.Id,
+            Name = model.Name,
+            Instructor = model.Instructor,
+            Category = model.Category,
+            ScheduledTime = model.ScheduledTime,
+            Capacity = model.Capacity
+        };
     }
 }

@@ -10,13 +10,13 @@ public sealed class Booking
     {
         Id = Required(id, nameof(id));
         MemberId = Required(memberId, nameof(memberId));
-        ClassId = Required(GymClassId, nameof(GymClassId));
+        GymClassId = Required(GymClassId, nameof(GymClassId));
         BookedAt = bookedAt;
     }
 
     public string Id { get; private set; } = null!;
     public string MemberId { get; private set; } = null!;
-    public string ClassId { get; private set; } = null!;
+    public string GymClassId { get; private set; } = null!;
     public DateTime BookedAt { get; private set; }
 
     // Navigation properties 

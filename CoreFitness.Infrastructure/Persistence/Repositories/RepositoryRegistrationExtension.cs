@@ -16,6 +16,8 @@ public static class RepositoryRegistrationExtension
     {
         services.AddScoped<IMembershipRepository, MembershipRepository>();
         services.AddScoped<IMemberRepository, MemberRepository>();
+        services.AddScoped<IGymClassRepository, GymClassRepository>();
+        services.AddScoped<IBookingRepository, BookingRepository>();
 
 
         return services;

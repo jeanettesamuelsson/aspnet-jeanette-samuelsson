@@ -1,4 +1,5 @@
-﻿using CoreFitness.Application.Members;
+﻿using CoreFitness.Application.Bookings;
+using CoreFitness.Application.Members;
 using CoreFitness.Application.Members.Services;
 using CoreFitness.Application.Memberships;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,12 @@ public static class ApplicationServiceCollectionRegistrationExtensions
         services.AddScoped<ISignInMemberService, SignInMemberService>();
         services.AddScoped<IUpdateMemberProfileService, UpdateMemberProfileService>();
         services.AddScoped<IDeleteMemberService, DeleteMemberService>();
+
+
+        services.AddScoped<IBookGymClassService, BookGymClassService>();
+        services.AddScoped<IGetGymClassesService, GetGymClassesService>();
+
+        services.AddScoped<IDeleteBookingService, DeleteBookingService>();
 
 
         return services;

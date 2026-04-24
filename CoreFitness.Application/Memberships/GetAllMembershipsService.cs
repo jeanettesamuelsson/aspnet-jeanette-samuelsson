@@ -8,23 +8,21 @@ namespace CoreFitness.Application.Memberships;
 public class GetAllMembershipsService(IMembershipRepository repo) : IGetAllMembershipsService
 {
 
-    public async Task<Result<Membership>> ExecuteAsync(string membershipId, CancellationToken ct = default)
+    public async Task<Result<IEnumerable<Membership>>> ExecuteAsync(CancellationToken ct = default)
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(membershipId))
-                return Result<Membership>.Error("Please enter member id");
+            // Anropa GetAllAsync från ditt RepositoryBase
+            var memberships = await repo.GetAllAsync(ct);
 
-            var membership = await repo.GetByIdAsync(membershipId, ct);
+            if (memberships == null || !memberships.Any())
+                return Result<IEnumerable<Membership>>.NotFound("Inga medlemskap hittades i databasen.");
 
-            if (membership is null)
-                return Result<Membership>.NotFound($"Member with id: {membershipId} was not found");
-
-            return Result<Membership>.Ok(membership);
+            return Result<IEnumerable<Membership>>.Ok(memberships);
         }
         catch (Exception ex)
         {
-            return Result<Membership>.Error(ex.Message);
+            return Result<IEnumerable<Membership>>.Error(ex.Message);
         }
     }
 }

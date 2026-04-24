@@ -8,6 +8,6 @@ namespace CoreFitness.Application.Memberships;
 
 public interface IGetAllMembershipsService
 {
-    Task<Result<Membership>> ExecuteAsync(string membershipId, CancellationToken ct = default);
+    Task<Result<IEnumerable<Membership>>> ExecuteAsync(CancellationToken ct = default);
 
 }

@@ -20,9 +20,8 @@ builder.Services.AddApplication(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 
-// pausa databas await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
-
-
+// pausa databas
+await PersistenceDatabaseInitializer.InitializeAsync(app.Services, app.Environment);
 
 
 app.UseHsts();

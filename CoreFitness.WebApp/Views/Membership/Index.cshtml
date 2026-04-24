@@ -1,20 +1,22 @@
-﻿
+﻿@model IEnumerable<MembershipCardViewModel>
+
+
+
 <h1>Our Membership offers</h1>
 
 
 <div class="cards-grid">
-
-    @* @foreach (var card in Model.Memberships)
+    @if (Model != null && Model.Any())
     {
-        <partial name="Partials/_MembershipCard/_MembershipCard" model="card" />
-    } *@
-    
-   
-        <partial name="Partials/_MembershipCard/_MembershipCard" />
-
-        <partial name="Partials/_MembershipCard/_MembershipCard"  />
-
-   
+        @foreach (var membership in Model)
+        {
+            <partial name="Partials/_MembershipCard/_MembershipCard" model="membership" />
+        }
+    }
+    else
+    {
+        <p>Loading memberships...</p>
+    }
 
     <div class="call-us-card">
         <h3>Get Your Membership</h3>

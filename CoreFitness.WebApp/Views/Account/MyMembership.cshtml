@@ -56,16 +56,52 @@
         <div class="my-membership">
 
                 <h2>My Membership</h2>
+
+            @if (Model.CurrentPlan != null)
+            {
+                <div class="current-membership-info">
+                    <h4>Your current plan: @Model.CurrentPlan.Title</h4>
+                    <p>Price: @Model.CurrentPlan.Price / month</p>
+                </div>
+            }
+            else
+            {
+                <p>You don't have an active membership yet. Pick one below!</p>
+            }
     
-                <p>
-                    You are currently subscribed to the <strong>Premium Plan</strong>.
-                    Your next billing date is on <strong>May 28, 2026</strong>.
-                </p>
-    
-            <a href="#" class="signin-btn">Manage Membership <i class="fa-solid fa-chevron-right"></i></a>
+            <hr class="section-divider" />
+
+            @* Form to update membership plan *@
+
+            <div class="update-membership-box">
+
+                <h3>Change or Select Plan</h3>
+
+                <form asp-controller="Account" asp-action="UpdateMembershipPlan" method="post">
+
+                    <div class="form-group">
+
+                        <label for="membershipId">Available Memberships</label>
+                        <select name="membershipId" id="membershipId" class="form-select" required>
+                            <option value="">-- Select a new plan --</option>
+                            @if (Model.AvailablePlans != null)
+                            {
+                                @foreach (var plan in Model.AvailablePlans)
+                                {
+                                    <option value="@plan.Id">@plan.Title (@plan.Price / month)</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                
+                    <button type="submit" class="btn-update-plan">
+                        Update Membership <i class="fa-solid fa-rotate"></i>
+                    </button>
+
+                </form>
+
+            </div>
         </div>
-
-
 
     </div>
 

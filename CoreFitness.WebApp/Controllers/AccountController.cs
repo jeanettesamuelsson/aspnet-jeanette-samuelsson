@@ -1,5 +1,6 @@
 ﻿using CoreFitness.Application.Members.Inputs;
 using CoreFitness.Application.Members.Services;
+using CoreFitness.Application.Memberships;
 using CoreFitness.Infrastrcuture.Models;
 using CoreFitness.Infrastructure.Identity;
 using CoreFitness.WebApp.Models.Account;
@@ -13,6 +14,8 @@ namespace CoreFitness.WebApp.Controllers
     IGetMemberProfileService getMemberProfileService,
     IUpdateMemberProfileService updateMemberProfileService,
     IDeleteMemberService deleteMemberService,
+    IUpdateMembershipService updateMembershipService,
+    IGetAllMembershipsService getAllMembershipsService,
     UserManager<AppUser> userManager,
     SignInManager<AppUser> signInManager
 
@@ -98,6 +101,7 @@ namespace CoreFitness.WebApp.Controllers
             var userId = userManager.GetUserId(User);
 
             var memberResult = await getMemberProfileService.ExecuteAsync(userId!, ct);
+            var membershipsResult = await getAllMembershipsService.ExecuteAsync(ct);
 
             if (!memberResult.Success || memberResult.Value == null)
                 return NotFound();
@@ -112,7 +116,8 @@ namespace CoreFitness.WebApp.Controllers
                     ? MapToCardViewModel(member.CurrentMembership)
                     : null,
 
-                AvailablePlans = new List<MembershipCardViewModel>()
+                AvailablePlans = membershipsResult.Value?.Select(m => MapToCardViewModel(m)).ToList()
+                             ?? new List<MembershipCardViewModel>()
             };
 
             return View(viewModel);
@@ -124,13 +129,24 @@ namespace CoreFitness.WebApp.Controllers
         {
             if (string.IsNullOrEmpty(membershipId))
             {
-                return RedirectToAction("Membership");
+                return RedirectToAction("MyMembership");
             }
 
             var userId = userManager.GetUserId(User);
 
-            TempData["SuccessMessage"] = "Your membership has been updated!";
-            return RedirectToAction("Membership");
+            var result = await updateMembershipService.ExecuteAsync(userId, membershipId, ct);
+
+            if (result.Success)
+            {
+                TempData["SuccessMessage"] = "Your membership has been updated!";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Could not update membership.";
+            }
+
+
+            return RedirectToAction("MyMembership");
         }
 
         // map from Domain to viewModel

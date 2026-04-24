@@ -17,6 +17,8 @@ public static class ApplicationServiceCollectionRegistrationExtensions
     {
         services.AddScoped<IGetMembershipService, GetMembershipService>();
         services.AddScoped<IGetAllMembershipsService, GetAllMembershipsService>();
+        services.AddScoped<IUpdateMembershipService, UpdateMembershipService>();
+
 
         services.AddScoped<IRegisterMemberService, RegisterMemberService>();
         services.AddScoped<IGetMemberProfileService, GetMemberProfileService>();

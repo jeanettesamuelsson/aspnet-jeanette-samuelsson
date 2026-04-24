@@ -15,7 +15,9 @@ public class MemberRepository(DataContext context) :
     {
         try
         {
-            var entity = await Set.FirstOrDefaultAsync(x => x.UserId == userId, ct);
+            var entity = await Set
+                .Include(x => x.CurrentMembership)
+                .FirstOrDefaultAsync(x => x.UserId == userId, ct);
             return entity is null ? default : ToDomainModel(entity);
 
         } catch
@@ -43,6 +45,7 @@ public class MemberRepository(DataContext context) :
         entity.PhoneNumber = model.PhoneNumber;
         entity.UpdatedAt = model.UpdatedAt;
         entity.ProfileImageUri = model.ProfileImageUri;
+        entity.CurrentMembershipId = model.CurrentMembershipId;
     }
 
     // map to member with rehydrate method

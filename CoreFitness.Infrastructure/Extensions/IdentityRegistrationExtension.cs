@@ -31,6 +31,9 @@ public static class IdentityRegistrationExtension
             //make sure tempData survives an redirection
             options.Cookie.IsEssential = true;
             options.Cookie.HttpOnly = true;
+
+            options.ExpireTimeSpan = TimeSpan.FromDays(30);
+            options.SlidingExpiration = true;
         });
 
         //register services

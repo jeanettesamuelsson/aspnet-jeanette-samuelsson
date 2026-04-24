@@ -1,4 +1,6 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@using CoreFitness.Infrastructure.Identity
+@inject SignInManager<AppUser> SignInManager
 
 <nav class="header-nav">
 
@@ -22,13 +24,33 @@
 
         
              <div class="nav-buttons">
-            <a asp-controller="Authentication" asp-action="SignUp">Become Member</a>
 
-            <a asp-controller="Authentication" asp-action="SignIn" class="signin-btn">
-                <span>Sign In</span>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
-            </div>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                @* Show My account and classes if user is logged in *@
+
+                <a asp-controller="Account" asp-action="My" class="nav-link">
+                    <i class="fa-regular fa-user"></i> My Account
+                </a>
+                
+                <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
+                    <button type="submit" class="signin-btn" style="border:none; cursor:pointer;">
+                        <span>Sign Out</span>
+                    </button>
+                </form>
+            }
+            else
+            {
+                @* show become member and sign in if not already logged in *@
+
+                <a asp-controller="Authentication" asp-action="SignUp">Become Member</a>
+
+                <a asp-controller="Authentication" asp-action="SignIn" class="signin-btn">
+                    <span>Sign In</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            }
+        </div>
 
      
      </div>

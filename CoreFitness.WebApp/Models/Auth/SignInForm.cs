@@ -12,9 +12,7 @@ public class SignInForm
     [DataType(DataType.Password)]
     [Display(Name = "Password", Prompt = "Please Enter Password")]
     public string Password { get; set; } = null!;
-    public bool RememberMe { get; set; }
-
-
+    
 
 
 }

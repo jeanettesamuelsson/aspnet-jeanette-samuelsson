@@ -31,7 +31,7 @@ public class AuthenticationController(
         if (!ModelState.IsValid)
             return View(form);
 
-        var input = new SignInInput(form.Email, form.Password, form.RememberMe);
+        var input = new SignInInput(form.Email, form.Password);
 
         var result = await signInMemberService.ExecuteAsync(input, ct);
 
@@ -108,8 +108,7 @@ public class AuthenticationController(
             return View(form); 
         }
 
-        // set rememeberMe false
-        var signInInput = new SignInInput(email, form.Password, false);
+        var signInInput = new SignInInput(email, form.Password);
 
         var signInResult = await signInMemberService.ExecuteAsync(signInInput, ct);
 

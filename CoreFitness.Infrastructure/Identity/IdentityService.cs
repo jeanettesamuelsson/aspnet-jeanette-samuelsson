@@ -52,10 +52,10 @@ public class IdentityService(UserManager<AppUser> userManager, SignInManager<App
 
     }
 
-    public async Task<Result<bool>> PasswordSignInAsync(string email, string password, bool rememberMe, CancellationToken ct = default)
+    public async Task<Result<bool>> PasswordSignInAsync(string email, string password, CancellationToken ct = default)
     {
-       
-        var result = await signInManager.PasswordSignInAsync(email, password, rememberMe, false);
+
+        var result = await signInManager.PasswordSignInAsync(email, password, isPersistent: false, lockoutOnFailure: false);
 
         // if result not succeded -> return result with error, else return result with ok
         return !result.Succeeded ? Result<bool>.Error("Invalid email och password") : Result<bool>.Ok(true);

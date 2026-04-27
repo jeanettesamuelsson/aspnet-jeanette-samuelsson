@@ -51,6 +51,11 @@ namespace CoreFitness.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateProfile(MyAccountViewModel model)
         {
+            //check modelstate
+            if (!ModelState.IsValid)
+                return View("My", model);
+            
+
             var userId = userManager.GetUserId(User);
 
             // map from viewmodel(form) to Input application class

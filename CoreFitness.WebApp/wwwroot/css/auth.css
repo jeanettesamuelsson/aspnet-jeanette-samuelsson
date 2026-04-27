@@ -69,63 +69,61 @@
 
 button {
     background-color: var(--green-color);
-    color: var(--primary-text-color);
+    color: black !important;
     border: none;
-    padding: 15px;
-    width: 100%;
+    padding: 0.7rem 1.5rem;
+    width: fit-content;
     border-radius: 30px;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    margin-top: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
+    gap: 1rem;
     transition: transform 0.1s;
-}
+    text-decoration: none;
 
-
-    button i {
-        position: absolute;
-        right: 25px; 
-        font-size: 1.1rem; 
+    i {
+        display: inline-block;
+        font-size: 0.8rem;
     }
 
-    button:active {
+    &:active {
         transform: scale(0.98);
     }
-
-
-.checkbox {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.85rem;
-}
-
-.field-validation-error {
-    color: #e74c3c;
-    font-size: 0.75rem;
-    margin-top: 5px;
-}
-
-.additional-information a {
-    color: #000;
-    text-decoration: underline;
-    font-weight: 600;
 }
 
 
-.login-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin: 2rem;
-}
+    .checkbox {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.85rem;
+    }
 
-hr {
-    width: 80%;
-    opacity: 0.2;
-}
+    .field-validation-error {
+        color: #e74c3c;
+        font-size: 0.75rem;
+        margin-top: 5px;
+    }
+
+    .additional-information a {
+        color: #000;
+        text-decoration: underline;
+        font-weight: 600;
+    }
+
+
+    .login-icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem;
+    }
+
+    hr {
+        width: 80%;
+        opacity: 0.2;
+    }

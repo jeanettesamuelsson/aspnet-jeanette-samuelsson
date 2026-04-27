@@ -33,11 +33,12 @@
                     <i class="fa-regular fa-user"></i> My Account
                 </a>
                 
-                <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
-                    <button type="submit" class="signin-btn" style="border:none; cursor:pointer;">
+                <a asp-controller="Account" asp-action="Logout" class="signin-btn">
+                  
                         <span>Sign Out</span>
-                    </button>
-                </form>
+                        <i class="fa-solid fa-chevron-right"></i>
+                   
+                </a>
             }
             else
             {

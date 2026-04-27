@@ -123,7 +123,8 @@ h3 {
 
 .header-nav {
     background-color: black;
-    height: 110px;
+    height: auto;
+    padding: 1rem;
 }
 
 .nav-wrapper {
@@ -315,24 +316,16 @@ h3 {
     display: flex;
     align-items: stretch; 
     justify-content: center;
-    gap: 40px;
-    padding: 50px;
+    gap: 2rem;
     max-width: 1200px;
+    padding: 3rem 0 3rem 0;
     margin: 0 auto;
 }
 
 #faq-img {
-    flex: 1; 
-    display: flex; 
+    display: none; 
 }
 
-    #faq-img img {
-        width: 100%;
-        height: 100%; 
-        border-radius: 20px;
-        object-fit: cover; 
-        display: block;
-    }
 
 #faq-r-column {
 
@@ -497,6 +490,7 @@ details[open] summary i {
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
+        padding: 0;
     }
 
     .nav-links {
@@ -571,7 +565,14 @@ details[open] summary i {
             color: #1a1a1a;
         }
 
-
+ 
+        #faq-img  {
+            width: 100%;
+            height: 748px;
+            border-radius: 20px;
+            object-fit: cover;
+            display: block;
+        }
 
     .footer-top {
     

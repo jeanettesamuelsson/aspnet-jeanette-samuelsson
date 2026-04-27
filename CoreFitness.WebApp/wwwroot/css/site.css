@@ -122,11 +122,7 @@ h3 {
 /* #region Header-navbar */
 
 .header-nav {
-    background-color: #000;
-    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/dark-section-img.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: black;
     height: 110px;
 }
 
@@ -221,15 +217,15 @@ h3 {
 /*#endregion*/
 
 /* #region footer */
-     
+
 
 #footer-wrapper {
     width: 100%;
     background-color: #000;
-    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/dark-section-img.svg');
+    background-image: url('/images/dark-section-img.svg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     padding: 2rem 1rem;
     margin: auto;
     color: white;
@@ -237,7 +233,7 @@ h3 {
 
 .footer-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 0 auto;
     padding: 0.5rem;
@@ -249,8 +245,6 @@ h3 {
 }
 
    
-
-
 .divider {
     border: 0;
     height: 1px;
@@ -264,12 +258,18 @@ h3 {
 .footer-middle {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 2rem;
+
 }
 
-.location-group, .hours-group {
+.location-group {
+    display: none;
+
+}
+
+.hours-group {
     flex: 1 1 100%; 
     text-align: center;
 }
@@ -509,8 +509,7 @@ details[open] summary i {
     }
 
     .header-nav {
-        background-image: url('/images/dark-section-img.svg');
-        background-repeat: repeat;
+      
         padding: 3rem;
     }
 
@@ -524,7 +523,13 @@ details[open] summary i {
 
     .footer-middle {
         flex-direction: row; 
-        justify-content: space-between;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .location-group {
+        display: block;
         text-align: left;
     }
 
@@ -533,7 +538,11 @@ details[open] summary i {
     }
 
     .map-wrapper {
-        flex-direction: row;
+        align-items: flex-start;
+        flex-direction: column;
+        text-align: left;
+        padding: 0;
+
     }
 
 
@@ -566,9 +575,10 @@ details[open] summary i {
     .footer-top {
     
         h3 {
+            display: block;
+            font-size: 2rem;
             font-weight:400;
             text-align: right;
-            display: block;
             color: var(--secondary-text-color);
         }
     }

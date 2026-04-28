@@ -491,6 +491,7 @@ details[open] summary i {
         justify-content: space-between;
         gap: 1rem;
         padding: 0;
+        margin: 1rem;
     }
 
     .nav-links {
@@ -503,11 +504,7 @@ details[open] summary i {
         gap: 25px;
     }
 
-    .header-nav {
-      
-        padding: 3rem;
-    }
-
+    
 
     #footer-wrapper {
         width: 100%;

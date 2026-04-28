@@ -63,7 +63,7 @@
 }
 
     .form-input:focus {
-        border-color: #d2f34c; 
+        border-color: var(--green-color);
     }
 
 
@@ -127,3 +127,13 @@ button {
         width: 80%;
         opacity: 0.2;
     }
+
+
+textarea.text-input {
+    resize: none;
+    height: 200px;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-bottom-left-radius: 7px;
+}

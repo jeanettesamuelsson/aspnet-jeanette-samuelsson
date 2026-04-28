@@ -16,12 +16,14 @@ public class CustomerServiceController : Controller
         return View(new ContactFormViewModel());
     }
 
+   
     [HttpPost]
     [ValidateAntiForgeryToken] 
     public IActionResult Index(ContactFormViewModel form)
     {
+        //reurn form view with error message if modelstate is not valid
         if (!ModelState.IsValid)
-        { //reurn form view with error message if modelstate is not valid
+        { 
             return View(form);
         }
 

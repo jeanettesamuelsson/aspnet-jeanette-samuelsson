@@ -37,6 +37,14 @@ public class AuthenticationController(
 
         if (!result.Success)
         {
+            // check if user is admin
+            if (User.IsInRole("Admin"))
+            {
+                // send to admin test
+                return RedirectToAction("AdminTest", "Account");
+            }
+
+
             ViewData["ErrorMessage"] = result.ErrorMessage;
             return View(form);
 

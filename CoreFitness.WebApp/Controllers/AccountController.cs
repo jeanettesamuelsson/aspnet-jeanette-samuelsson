@@ -23,6 +23,14 @@ namespace CoreFitness.WebApp.Controllers
 
 
     {
+
+        //test for admin 
+        [Authorize(Roles = "Admin")] 
+        public IActionResult AdminTest()
+        {
+            return Content("test admin role!!!");
+        }
+
         [Authorize]
         [HttpGet("my")]
         public async Task<IActionResult> My(CancellationToken ct)

@@ -1,7 +1,9 @@
 ﻿
 
+using CoreFitness.Infrastructure.Identity;
 using CoreFitness.Infrastructure.Persistence.Data;
 using CoreFitness.Infrastructure.Persistence.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,6 +17,10 @@ public static class PersistenceDatabaseInitializer
         using var scope = serviceProvider.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<DataContext>();
 
+        // get Identity services
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+
         if (env.IsEnvironment("Testing")) // for testing
         {
             await context.Database.EnsureCreatedAsync(ct);
@@ -24,11 +30,50 @@ public static class PersistenceDatabaseInitializer
             await context.Database.MigrateAsync(ct);
         }
 
-
+        // run seeding methods
+        await SeedRolesAsync(roleManager);
+        await SeedAdminUserAsync(userManager);
         await SeedMembershipsAsync(context);
     }
 
-    // seed data for memberships, add functionality for admin to add memberships manually?????
+    // seed data for roles
+
+    private static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+    {
+        string[] roleNames = { "Admin", "Member" };
+        foreach (var roleName in roleNames)
+        {
+            // check if the role already exists, if not callCreateAsync method from roleManager
+            if (!await roleManager.RoleExistsAsync(roleName))
+            {
+                await roleManager.CreateAsync(new IdentityRole(roleName));
+            }
+        }
+    }
+
+    // seed data to create a admin user to db
+    private static async Task SeedAdminUserAsync(UserManager<AppUser> userManager)
+    {
+        var adminEmail = "admin@corefitness.se";
+        var adminUser = await userManager.FindByEmailAsync(adminEmail);
+
+        if (adminUser is null)
+        {
+            // create the user if user is null
+           var user = AppUser.Create(adminEmail);
+
+           var result = await userManager.CreateAsync(user, "ChangeMe123!");
+
+           if (result.Succeeded)
+            {
+                // add admin role to user
+                await userManager.AddToRoleAsync(user, "Admin");
+            }
+        }
+    }
+
+
+    // seed data for memberships
     private static async Task SeedMembershipsAsync(DataContext context)
     {
         // returns if memmberships already exist in db 

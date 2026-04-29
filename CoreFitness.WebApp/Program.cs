@@ -17,6 +17,9 @@ builder.Services.AddSession();
 builder.Services.AddInfrastructure(builder.Configuration, builder.Environment);
 builder.Services.AddApplication(builder.Configuration, builder.Environment);
 
+// configure policys
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("Admins", policy => policy.RequireRole("Admin"));
 
 var app = builder.Build();
 
@@ -41,6 +44,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
+
+
 
 
 app.Run();

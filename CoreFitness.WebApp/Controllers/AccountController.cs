@@ -180,7 +180,6 @@ namespace CoreFitness.WebApp.Controllers
 
             var viewModel = new MyBookingsViewModel
             {
-                // Mappa dina bokningar här
                 BookedClasses = new List<BookedClassViewModel>()
             };
 

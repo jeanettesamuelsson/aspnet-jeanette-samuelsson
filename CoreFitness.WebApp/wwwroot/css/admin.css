@@ -1,0 +1,167 @@
+﻿
+.admin-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 2rem;
+    min-height: 70vh;
+}
+
+
+.admin-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.admin-top-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+.class-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+}
+
+.class-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-left: 3px solid var(--green-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.class-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--green-color);
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.class-instructor {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.class-details p {
+    margin: 0.4rem 0;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: #444;
+}
+
+.class-details i {
+    color: #A4D65E;
+}
+
+
+.class-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    gap: 0.5rem;
+}
+
+.edit-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+        background-color: var(--green-color);
+    }
+}
+
+.delete-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: inherit;
+    background-color: #ffeded;
+    color: #d9534f;
+    border: 1px solid #d43f3a;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #d9534f;
+        color: white;
+    }
+}
+
+    
+
+/* desktop media query */
+
+@media (min-width: 768px) {
+
+    .admin-container {
+        max-width: 1200px;
+
+
+    }
+
+    .admin-dashboard {
+        gap: 3rem;
+        padding: 5rem;
+    }
+
+    .admin-actions {
+        flex-direction: row;
+    }
+
+
+    .admin-top-actions {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .class-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .class-actions {
+        flex-direction: row; 
+    }
+}
+
+

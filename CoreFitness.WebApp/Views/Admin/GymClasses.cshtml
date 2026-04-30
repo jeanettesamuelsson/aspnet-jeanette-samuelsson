@@ -18,22 +18,14 @@
     }
 
     <div class="admin-top-actions">
-        <a asp-action="CreateSession" class="signin-btn create-btn">
+        <a asp-action="CreateSession" class="signin-btn ">
             <i class="fa-solid fa-plus"></i> Create New Class
         </a>
-        <a asp-action="Index" class="back-link">
+        <a asp-action="Index" class="signin-btn">
             <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
         </a>
     </div>
-    <div class="admin-top-actions">
-        <a asp-action="CreateSession" class="signin-btn create-btn">
-            <i class="fa-solid fa-plus"></i> Create New Class
-        </a>
-        <a asp-action="Index" class="back-link">
-            <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
-        </a>
-    </div>
-
+   
     <div class="class-grid">
         @if (Model == null || !Model.Any())
         {
@@ -48,24 +40,24 @@
                 <div class="class-card">
                     <div class="class-info">
                         <h3>@gymClass.Name</h3>
-                        <p class="class-category"><strong>Category:</strong> @(gymClass.Category ?? "General")</p>
-                        
-                        <p class="class-time">
-                            <i class="fa-regular fa-clock"></i> @gymClass.ScheduledTime.ToString("f")
+                        <p>Category: @(gymClass.Category ?? "General")</p>
+                       
+                        <p>
+                            <i class="fa-regular fa-clock"></i> @gymClass.ScheduledTime.ToString("g")
                         </p>
                         
-                        <p class="class-instructor">
-                            <i class="fa-solid fa-user-tie"></i> Instructor: @(gymClass.Instructor ?? "TBA")
+                        <p>
+                            <i class="fa-solid fa-user-tie"></i> Instructor: @(gymClass.Instructor ?? "Unknown")
                         </p>
 
-                        <p class="class-spots">
+                        <p>
                             <i class="fa-solid fa-users"></i>
                             Capacity: @gymClass.Capacity
                         </p>
                     </div>
                     <div class="class-actions">
-                        <button class="btn-small">Edit</button>
-                        <button class="btn-small btn-delete">Delete</button>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
                     </div>
                 </div>
             }

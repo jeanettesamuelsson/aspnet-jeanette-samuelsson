@@ -25,6 +25,15 @@
 
             @if (SignInManager.IsSignedIn(User))
             {
+                @* Show admin page if user is admin*@
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Admin" asp-action="Index" class="nav-link admin-link">
+                        <i class="fa-solid fa-lock"></i> Admin Page
+                    </a>
+                }
+
                 @* Show My account and log out if user is logged in *@
 
                 <a asp-controller="Account" asp-action="My" class="nav-link">

@@ -1,7 +1,18 @@
 ﻿
+<div class="admin-dashboard">
 
-<h2>Admin page</h2>
+    <h1>Admin Control Panel</h1>
 
-<h3>Manage Users:</h3>
+    <p>Welcome, @User.Identity!.Name. Managing the gym has never been easier.</p>
 
-<h3>Manage Gym Classes:</h3>
+    <div class="admin-actions">
+        <a asp-action="Bookings" class="signin-btn">
+            <i class="fa-solid fa-calendar-check"></i> Manage Bookings
+        </a>
+
+        <a asp-action="GymClasses" class="signin-btn">
+            <i class="fa-solid fa-plus"></i> Manage Gym Classes
+        </a>
+    </div>
+
+    </div>

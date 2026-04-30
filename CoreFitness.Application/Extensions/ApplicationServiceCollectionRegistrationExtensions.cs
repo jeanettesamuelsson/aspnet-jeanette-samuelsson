@@ -31,6 +31,7 @@ public static class ApplicationServiceCollectionRegistrationExtensions
         services.AddScoped<IGetGymClassesService, GetGymClassesService>();
 
         services.AddScoped<IDeleteBookingService, DeleteBookingService>();
+        services.AddScoped<IGetAllBookingsService, GetAllBookingsService>();
 
 
         return services;

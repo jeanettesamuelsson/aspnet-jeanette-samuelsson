@@ -13,16 +13,16 @@ public class AdminController : Controller
         return View();
     }
 
-    //// show all bookings
-    //public async Task<IActionResult> Bookings()
-    //{
-    //    return View();
-    //}
+    // show all bookings
+    public async Task<IActionResult> Bookings()
+    {
+        return View();
+    }
 
-    //// create a form to add new gym classes - get all classes and show them in a list with an option to add new ones
-    //public IActionResult GymClasses()
-    //{
-    //    return View();
-    //}
+    // create a form to add new gym classes - get all classes and show them in a list with an option to add new ones
+    public IActionResult GymClasses()
+    {
+        return View();
+    }
 
 }

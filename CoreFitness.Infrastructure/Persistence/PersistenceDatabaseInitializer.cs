@@ -34,6 +34,7 @@ public static class PersistenceDatabaseInitializer
         await SeedRolesAsync(roleManager);
         await SeedAdminUserAsync(userManager);
         await SeedMembershipsAsync(context);
+        await SeedGymClassesAsync(context);
     }
 
     // seed data for roles
@@ -100,6 +101,38 @@ public static class PersistenceDatabaseInitializer
         };
 
         await context.Memberships.AddRangeAsync(memberships);
+        await context.SaveChangesAsync();
+    }
+
+    // seed data for gym classes 
+
+    private static async Task SeedGymClassesAsync(DataContext context)
+    {
+        if (await context.GymClasses.AnyAsync()) return;
+
+        var gymClasses = new List<GymClassEntity>
+    {
+        new() {
+            Id = Guid.NewGuid().ToString(),
+            Name = "Bodybuilding for beginners",
+            Instructor = "Sarah Nilson",
+            Category = "Strength",
+            ScheduledTime = DateTime.Now.AddDays(100),
+            Capacity = 15,
+            CreatedAt = DateTime.Now,
+        },
+        new() {
+            Id = Guid.NewGuid().ToString(),
+            Name = "Spinning HIT",
+            Instructor = "Marcus Berg",
+            Category = "Cardio",
+            ScheduledTime = DateTime.Now.AddDays(100),
+            Capacity = 15,
+            CreatedAt = DateTime.Now,
+        }
+    };
+
+        await context.GymClasses.AddRangeAsync(gymClasses);
         await context.SaveChangesAsync();
     }
 }

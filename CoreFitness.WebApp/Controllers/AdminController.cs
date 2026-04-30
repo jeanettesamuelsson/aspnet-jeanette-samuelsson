@@ -1,28 +1,48 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CoreFitness.Application.Bookings;
+using CoreFitness.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreFitness.WebApp.Controllers;
 
-public class AdminController : Controller
+[Authorize(Roles = "Admin")]
+public class AdminController
+    (IGetAllBookingsService getAllBookingsService,
+    IGetGymClassesService getGymClassesService) : Controller
 {
 
-    //test for admin 
-    [Authorize(Roles = "Admin")]
+   
     public IActionResult Index()
     {
         return View();
     }
 
     // show all bookings
-    public async Task<IActionResult> Bookings()
+    public async Task<IActionResult> Bookings(CancellationToken ct)
     {
-        return View();
+        var result = await getAllBookingsService.ExecuteAsync(ct);
+
+        if (!result.Success)
+        {
+            ViewData["ErrorMessage"] = result.ErrorMessage;
+            return View(Enumerable.Empty<Booking>());
+        }
+
+        return View(result.Value);
     }
 
     // create a form to add new gym classes - get all classes and show them in a list with an option to add new ones
-    public IActionResult GymClasses()
+    public async Task<IActionResult> GymClasses(CancellationToken ct)
     {
-        return View();
+        var result = await getGymClassesService.ExecuteAsync(ct); 
+
+        if(!result.Success)
+        {
+            ViewData["ErrorMessage"] = result.ErrorMessage;
+            return View(Enumerable.Empty<GymClass>());
+        }
+
+        return View(result.Value);
     }
 
 }

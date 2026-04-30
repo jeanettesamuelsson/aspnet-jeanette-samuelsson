@@ -18,6 +18,32 @@
   
 }
 
+.class-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #A4D65E;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.class-instructor {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.btn-delete {
+    background-color: #ffeded;
+    color: #d9534f;
+    border: 1px solid #d43f3a;
+    margin-left: 5px;
+}
+
+    .btn-delete:hover {
+        background-color: #d9534f;
+        color: white;
+    }
+
 @media (min-width: 768px) {
     .admin-dashboard {
         gap: 3rem;

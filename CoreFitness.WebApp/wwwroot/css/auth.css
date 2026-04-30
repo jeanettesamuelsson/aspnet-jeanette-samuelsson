@@ -67,34 +67,6 @@
     }
 
 
-button {
-    background-color: var(--green-color);
-    color: black !important;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    width: fit-content;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    transition: transform 0.1s;
-    text-decoration: none;
-
-    i {
-        display: inline-block;
-        font-size: 0.8rem;
-    }
-
-    &:active {
-        transform: scale(0.98);
-    }
-}
-
-
     .checkbox {
         flex-direction: row;
         align-items: center;

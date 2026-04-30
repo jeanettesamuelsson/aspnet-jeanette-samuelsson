@@ -110,40 +110,6 @@
         font-size: 0.85rem;
     }
 
-    .about-r-column button {
-        background-color: var(--green-color);
-        color: var(--primary-text-color);
-        border: none;
-        padding: 15px;
-        width: 100%;
-        border-radius: 30px;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        transition: transform 0.1s;
-    }
-
-        .about-r-column button i {
-            position: absolute;
-            right: 25px;
-            font-size: 1.1rem;
-        }
-
-        .about-r-column button:active {
-            transform: scale(0.98);
-        }
-
-    .about-r-column .checkbox {
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        font-size: 0.85rem;
-    }
 
     .about-r-column .field-validation-error {
         color: #e74c3c;
@@ -291,16 +257,25 @@
     border-radius: 5px;
 }
 
-.btn-update-plan {
-    background-color: var(--green-color); 
-    color: white;
+
+.logout-link {
+    background: none;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 1.2rem;
+    margin: 0;
+    font: inherit; 
     cursor: pointer;
-    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: inherit; 
+    text-align: left;
 }
 
+    .logout-link:hover {
+        color: var(--green-color);
+    }
 
 @media (max-width: 768px) {
     h1 {

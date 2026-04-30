@@ -41,10 +41,10 @@
                 </li>
 
                 <li>
-                    <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" style="display:inline;">
-                        <a href="javascript:void(0)" onclick="document.getElementById('logoutForm').submit();">
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button type="submit" class="logout-link">
                             Sign Out <i class="fa-solid fa-chevron-right"></i>
-                        </a>
+                        </button>
                     </form>
                 </li>
             </ul>

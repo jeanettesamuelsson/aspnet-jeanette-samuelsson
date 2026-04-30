@@ -204,10 +204,16 @@ h3 {
     transition: transform 0.1s;
     text-decoration: none;
 
+    /*reset to make a and button look the same*/
+    border: none;
+    outline: none; 
+    font-family: inherit; 
+    -webkit-appearance: none; 
+    appearance: none;
+
     i {
         display: inline-block;
         font-size: 0.8rem;
-       
     }
 
     &:active {

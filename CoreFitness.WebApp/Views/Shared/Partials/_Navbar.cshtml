@@ -25,18 +25,18 @@
 
             @if (SignInManager.IsSignedIn(User))
             {
-                @* Show My account and classes if user is logged in *@
+                @* Show My account and log out if user is logged in *@
 
                 <a asp-controller="Account" asp-action="My" class="nav-link">
                     <i class="fa-regular fa-user"></i> My Account
                 </a>
                 
-                <a asp-controller="Account" asp-action="Logout" class="signin-btn">
-                  
+                <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
+                    <button type="submit" class="signin-btn" style="border:none; cursor:pointer;">
                         <span>Sign Out</span>
                         <i class="fa-solid fa-chevron-right"></i>
-                   
-                </a>
+                    </button>
+                </form>
             }
             else
             {

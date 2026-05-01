@@ -6,7 +6,7 @@
     min-height: calc(100dvh - 110px);
     background-color: var(--primary-bg-color);
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     box-sizing: border-box;
 }
 

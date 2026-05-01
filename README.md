@@ -1,7 +1,9 @@
 # 🏋️‍♂️ Core Fitness
 **CoreFitness** is a web application and a gym administration system designed to streamline the management of training sessions, bookings, and memberships. This project was developed as a school project for an **ASP.NET** course
 
+
 ---
+
 
 ## Developed using these technologies:
 
@@ -12,7 +14,9 @@
   * **Microsoft SQL Server:** Supported for production environments to ensure scalability.
 * **ASP.NET Core Identity:** Handles authentication and role-based authorization (Admin/Member).
 
+
 ---
+
 
 ## 🏁 Getting Started
 
@@ -22,7 +26,7 @@ Follow these steps to set up the project on your local machine.
 
 1. By default, the project is configured to use **SQLite** for development, requiring no local server installation.
 2. If you wish to use **SQL Server**, update the `ConnectionString` in `appsettings.json` and ensure the database provider is set to SQL Server in `Program.cs`.
-3. Open a terminal in the project root and run the following command to create the database schema:
+3. Open a terminal in the project root and run the following command to create the database schema: "dotnet ef database update"
 
 ---
 

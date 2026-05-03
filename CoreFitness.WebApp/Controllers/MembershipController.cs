@@ -13,7 +13,7 @@ namespace CoreFitness.WebApp.Controllers
             var result = await getAllMembershipsService.ExecuteAsync(ct);
 
             // return empty list if null
-            if (!result.Success || result.Value == null)
+            if (!result.Success || result.Value is null)
             {
                 return View(new List<MembershipCardViewModel>()); 
             }

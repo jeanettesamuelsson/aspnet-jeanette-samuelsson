@@ -11,8 +11,6 @@ namespace CoreFitness.Application.Extensions;
 
 public static class ApplicationServiceCollectionRegistrationExtensions
 {
-
-
     public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
     {
         services.AddScoped<IGetMembershipService, GetMembershipService>();
@@ -32,7 +30,6 @@ public static class ApplicationServiceCollectionRegistrationExtensions
 
         services.AddScoped<IDeleteBookingService, DeleteBookingService>();
         services.AddScoped<IGetAllBookingsService, GetAllBookingsService>();
-
 
         return services;
     }

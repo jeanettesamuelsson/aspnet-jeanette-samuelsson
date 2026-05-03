@@ -5,7 +5,6 @@ namespace CoreFitness.Application.Memberships
 {
     public interface IGetMembershipService
     {
-
         Task<Result<Membership>> ExecuteAsync(string membershipId, CancellationToken ct = default);
     }
 }

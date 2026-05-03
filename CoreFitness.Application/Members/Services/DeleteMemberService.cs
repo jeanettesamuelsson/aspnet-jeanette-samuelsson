@@ -12,7 +12,7 @@ public class DeleteMemberService(
     IWebHostEnvironment env 
     ) : IDeleteMemberService
 {
-    //method to delete member and remove image from server --->!!(got help from AI with this)!!<----
+    //method to delete member and remove image from server 
     public async Task<Result> ExecuteAsync(string userId, CancellationToken ct = default)
     {
         try
@@ -20,7 +20,7 @@ public class DeleteMemberService(
             // get member
             var member = await memberRepo.GetMemberByUserIdAsync(userId, ct);
 
-            if (member != null)
+            if (member is not null)
             {
                 // remove file from server if exists (not null)
                 if (!string.IsNullOrWhiteSpace(member.ProfileImageUri))

@@ -26,7 +26,7 @@ public class BookingRepository(DataContext context) :
             var entity = await Set
                 .FirstOrDefaultAsync(b => b.Id == bookingId && b.MemberId == memberId);
 
-            if (entity == null)
+            if (entity is null)
                 return false;
 
             Set.Remove(entity);

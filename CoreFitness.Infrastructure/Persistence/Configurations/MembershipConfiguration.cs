@@ -13,24 +13,24 @@ public class MembershipConfiguration : IEntityTypeConfiguration<MembershipEntity
         builder.ToTable("Memberships");
 
         // Set PK
-        builder.HasKey(e => e.Id);
+        builder.HasKey(x => x.Id);
 
-        builder.Property(e => e.Id)
+        builder.Property(x => x.Id)
             .ValueGeneratedNever();
 
-        builder.Property(e => e.Title)
+        builder.Property(x => x.Title)
             .IsRequired()
             .HasMaxLength(100);
 
-        builder.Property(e => e.Description)
+        builder.Property(x => x.Description)
             .IsRequired()
             .HasMaxLength(500);
 
-        builder.Property(e => e.Price)
+        builder.Property(x => x.Price)
             .HasColumnType("decimal(18,2)")
             .IsRequired();
 
-        builder.Property(e => e.MonthlyClasses)
+        builder.Property(x => x.MonthlyClasses)
             .IsRequired();
 
     }

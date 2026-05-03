@@ -32,6 +32,7 @@ public static class IdentityRegistrationExtension
             options.Cookie.IsEssential = true;
             options.Cookie.HttpOnly = true;
 
+            // logged in user stays logged in for 30 days
             options.ExpireTimeSpan = TimeSpan.FromDays(30);
             options.SlidingExpiration = true;
         });

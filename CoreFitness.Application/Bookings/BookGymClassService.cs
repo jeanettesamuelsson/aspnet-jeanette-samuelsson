@@ -19,7 +19,7 @@ public class BookGymClassService(
             // get logged in member
             var member = await memberRepository.GetMemberByUserIdAsync(userId, ct);
 
-            if (member == null)
+            if (member is null)
                 return Result<bool>.Error("Could not find the member.");
 
             // check if the class has available spots

@@ -25,9 +25,6 @@ public class GetMemberProfileService(IMemberRepository memberRepository) : IGetM
             return Result<Member>.Error(ex.Message);
         }
 
-
     }
 
-   
-
-    }
+ }

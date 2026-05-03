@@ -12,11 +12,10 @@ public class GetAllMembershipsService(IMembershipRepository repo) : IGetAllMembe
     {
         try
         {
-            // Anropa GetAllAsync från ditt RepositoryBase
             var memberships = await repo.GetAllAsync(ct);
 
-            if (memberships == null || !memberships.Any())
-                return Result<IEnumerable<Membership>>.NotFound("Inga medlemskap hittades i databasen.");
+            if (memberships is null || !memberships.Any())
+                return Result<IEnumerable<Membership>>.NotFound("Could not find memberships");
 
             return Result<IEnumerable<Membership>>.Ok(memberships);
         }

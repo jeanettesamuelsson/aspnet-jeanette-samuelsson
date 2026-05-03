@@ -1,5 +1,6 @@
 ﻿using CoreFitness.Infrastrcuture.Abstractions.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace CoreFitness.Infrastructure.Persistence.Repositories;
 
@@ -90,7 +91,7 @@ public abstract class RepositoryBase<TDomainModel, TId, TEntity, TDbContext>(TDb
         }
         catch
         {
-
+           // < ---impleemnt logger ??
             throw;
         }
 
@@ -104,26 +105,18 @@ public abstract class RepositoryBase<TDomainModel, TId, TEntity, TDbContext>(TDb
             return entity is null ? default : ToDomainModel(entity);
         }
 
-        catch
+        catch(Exception ex)
         {
-
+            // _logger.LogError(ex, "Failed to fetch entity with id {Id}", id);       <--- impleemnt logger??
             throw;
+           
         }
 
     }
     public virtual async Task<IReadOnlyList<TDomainModel>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        try
-        {
-            var entities = await Set.AsNoTracking().ToListAsync(cancellationToken);
-            return [.. entities.Select(ToDomainModel)];
-        }
-
-        catch
-        {
-
-            throw;
-        }
-
+      var entities = await Set.AsNoTracking().ToListAsync(cancellationToken);
+      return [.. entities.Select(ToDomainModel)];
+     
     }
 }

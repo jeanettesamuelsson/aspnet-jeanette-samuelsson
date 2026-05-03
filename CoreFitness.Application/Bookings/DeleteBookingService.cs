@@ -18,7 +18,7 @@ public class DeleteBookingService(
                 return Result<bool>.Error("Booking ID and User ID must be provided.");
 
             var member = await memberRepository.GetMemberByUserIdAsync(userId, ct);
-            if (member == null)
+            if (member is null)
                 return Result<bool>.NotFound("Member was not found");
 
             var success = await bookingRepository.DeleteMemberBookingAsync(bookingId, member.Id);

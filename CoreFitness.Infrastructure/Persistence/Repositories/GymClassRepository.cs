@@ -32,7 +32,6 @@ public class GymClassRepository(DataContext context) :
     }
 
     //method to check if a gym class is available for booking, based on its capacity and the number of bookings
-    //implement later????
     public Task<bool> IsAvailableAsync(string gymClassId, CancellationToken ct = default)
     {
         throw new NotImplementedException();
